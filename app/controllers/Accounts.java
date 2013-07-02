@@ -32,9 +32,8 @@ public class Accounts extends Controller {
 	}
 
 	public static void logout() {
-	  
 		session.clear();
- 		index();
+		index();
 	}
 
 	public static void authenticate(String email, String password) {
@@ -44,6 +43,7 @@ public class Accounts extends Controller {
 		if ((user != null) && (user.checkPassword(password) == true)) {
 			Logger.info("Successfull authentication of  " + user.firstName + " " + user.lastName);
 			session.put("logged_in_userid", user.id);
+			DonationController.index();
 		} else {
 			Logger.info("Authentication failed");
 			login();
@@ -59,4 +59,5 @@ public class Accounts extends Controller {
 	    Logger.info("In Accounts controller: Logged in user is " + logged_in_user.firstName);
 	    return logged_in_user;
 	}
+
 }
