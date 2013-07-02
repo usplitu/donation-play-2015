@@ -1,0 +1,26 @@
+#{extends 'main.html' /} 
+#{set title:'Report' /} 
+#{include 'nav.html' /}
+<p><h4>List Donations</h4></p>
+<div id="posts">
+    <div class="well">
+      <table class="table">
+				<thead>
+				  <tr>
+				    <td>Donors</td>
+				    <td>Amount($)</td>
+				    <td>Method donated</td>
+				  </tr>
+				</thead>
+				<tbody>
+				#{list items:donations, as:'donation'}
+				<tr>
+          <td>${donation.from.email}</td>
+          <td>${donation.received}</td>
+          <td>${donation.methodDonated}</td>
+        </tr>
+				#{/list}
+				</tbody>
+			</table>
+  </div>
+</div>
