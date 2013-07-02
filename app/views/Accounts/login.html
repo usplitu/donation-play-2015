@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'Login to donate to Abamo' /}
+
+#{include 'nav.html' /}
+
+<form action="/authenticate" method="POST">
+  <div class="control-group">
+    <div class="controls">
+      <label class="control-label">  Email: </label>
+      <input type="text" name="email">
+      <label class="control-label">  Password: </label>
+      <input type="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary"> Login  </button>
+  </div>
+</form>
