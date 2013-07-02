@@ -3,8 +3,5 @@ Features
 Welcome
 Sign on
 Log in
-Make Donation
+Make Donation: added progress bar
 Log out
-
-Models:
-User linked to Donation 1 -> *

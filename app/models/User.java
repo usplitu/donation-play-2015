@@ -6,7 +6,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
-
 import play.db.jpa.Model;
 
 @Entity
@@ -21,7 +20,6 @@ public class User extends Model
   
   public String email;
   public String password;
-
   
   public User(boolean usaCitizen,
 		  	  String firstName, 
@@ -44,4 +42,5 @@ public class User extends Model
 	public boolean checkPassword(String password) {
 		return this.password.equals(password);
 	}
+
 }

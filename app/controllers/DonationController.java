@@ -1,13 +1,8 @@
 package controllers;
 
 import play.*;
-import play.db.jpa.JPA;
 import play.mvc.*;
-
 import java.util.*;
-
-import javax.persistence.Query;
-
 import models.*;
 
 public class DonationController extends Controller {
@@ -18,8 +13,11 @@ public class DonationController extends Controller {
 			Logger.info("Donation class : Unable to getCurrentuser");
 			Accounts.login();
 		} else {
+			String prog = getPercentTargetAchieved();
+			String progress = prog + "%";
 			Logger.info("Donation ctrler : user is " + user.email);
-			render(user);
+			Logger.info("Donation ctrler : percent target achieved " + progress);
+			render(user, progress);
 		}
 	}
 
@@ -53,5 +51,24 @@ public class DonationController extends Controller {
 	private static void addDonation(User user, long amountDonated,String methodDonated) {
 		Donation bal = new Donation(user, amountDonated,methodDonated);
 		bal.save();
+	}
+
+	private static long getDonationTarget() {
+		// TODO Input this value thro' html template admin controlled
+		return 20000;
+	}
+
+	public static String getPercentTargetAchieved() {
+		List<Donation> allDonations = Donation.findAll();
+		long total = 0;
+		for (Donation donation : allDonations) {
+			total += donation.received;
+		}
+		long target = getDonationTarget();
+		long percentachieved = (total * 100 / target);
+		String progress = String.valueOf(percentachieved);
+		Logger.info("Percent of target achieved (string) " + progress
+				+ " percentachieved (long)= " + percentachieved);
+		return progress;
 	}
 }
