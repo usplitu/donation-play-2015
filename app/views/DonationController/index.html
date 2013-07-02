@@ -1,6 +1,22 @@
 #{extends 'main.html' /} #{set title:'Donation Request' /} 
 #{include 'nav.html' /}
-<p><h4>Welcome</h4></p>
+<p><h4>Welcome ${user.firstName}</h4></p>
 <p><h5>Please give generously</h5></p>
+<form action="/donation/donate" method="POST">
+	<div class="control-group">
+		<div class="controls">
+			<label class="control-label"> Select an amount: </label>
+      <select name = "amountDonated">
+           <option value="50">$50</option>
+           <option value="100">$100</option>
+            <option value="1000" selected>$1000</option>
+      </select>
+			<label class="radio"> <input type="radio" name="methodDonated" value="paypal" checked="checked">PayPal</label> 
+			<label class="radio"> <input type="radio" name="methodDonated" value="direct">Direct</label>
+		</div>
+		<button type="submit" class="btn btn-primary">Donate</button>
+	</div>
+</form>
+<hr>
 
 

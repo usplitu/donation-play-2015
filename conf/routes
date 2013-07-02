@@ -12,8 +12,9 @@ POST   /authenticate                            Accounts.authenticate
 POST   /register                                Accounts.register
 
 # Donation page
+#GET   /donation/{user}{progress}               DonationController.index
 GET    /donation                                DonationController.index
-
+POST   /donation/donate                         DonationController.donate
 
 
 

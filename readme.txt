@@ -3,5 +3,8 @@ Features
 Welcome
 Sign on
 Log in
-Blank donation page with routing
+Make Donation
 Log out
+
+Models:
+User linked to Donation 1 -> *
