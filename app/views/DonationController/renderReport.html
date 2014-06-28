@@ -1,26 +1,31 @@
 #{extends 'main.html' /} 
 #{set title:'Report' /} 
-#{include 'nav.html' /}
-<p><h4>List Donations</h4></p>
-<div id="posts">
-    <div class="well">
-      <table class="table">
+  <nav class="ui menu">
+    <a class="ui item" href="/">Home</a>
+  	<a class="ui item" href="/signup">Sign Up</a>
+  	<a class="ui item" href="/login">Log In</a>
+  	<a class="ui item" href="/donation">Make Donation</a>
+  	<a class="ui active item" href="/donation/report">Report</a>
+  	<a class="ui item" href="/logout">Log Out</a>
+  </nav>
+<h4>List Donations</h4>
+
+      <table class="ui table segment">
 				<thead>
 				  <tr>
-				    <td>Donors</td>
-				    <td>Amount($)</td>
-				    <td>Method donated</td>
+				    <th>Donors</th>
+				    <th>Amount($)</th>
+				    <th>Method donated</th>
 				  </tr>
 				</thead>
 				<tbody>
 				#{list items:donations, as:'donation'}
 				<tr>
-          <td>${donation.from.email}</td>
+          <td>${donation.from.firstName}&nbsp${donation.from.lastName}</td>
           <td>${donation.received}</td>
           <td>${donation.methodDonated}</td>
         </tr>
 				#{/list}
 				</tbody>
 			</table>
-  </div>
-</div>
+

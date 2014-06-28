@@ -4,20 +4,13 @@
   <head>
     <title>#{get 'title' /}</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" media="screen" href="@{'/public/assets/css/bootstrap.css'}">
-    
-    <style>
-      body 
-      {
-        padding-top: 60px;
-      }
-    </style>
+    <link rel="stylesheet" media="screen" href="@{'/public/semantic/css/semantic.min.css'}">
+    <script src="@{'/public/javascript/jquery-2.0.0.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+    <script src="@{'/public/semantic/javascript/semantic.js'}"></script>
   </head>
     
   <body>
-    <div class="container">
       #{doLayout /}
-    </div>
   </body>
 
 </html>

@@ -1,16 +1,33 @@
 #{extends 'main.html' /}
 #{set title:'Login to donate to Abamo' /}
 
-#{include 'nav.html' /}
+  <nav class="ui menu">
+    <a class="ui item" href="/">Home</a>
+  	<a class="ui item" href="/signup">Sign Up</a>
+  	<a class="ui active item" href="/login">Log In</a>
+  	<a class="ui item" href="/donation">Make Donation</a>
+  	<a class="ui item" href="/donation/report">Report</a>
+  	<a class="ui item" href="/logout">Log Out</a>
+  </nav>
 
+<section class="ui segment">
 <form action="/authenticate" method="POST">
-  <div class="control-group">
-    <div class="controls">
-      <label class="control-label">  Email: </label>
-      <input type="text" name="email">
-      <label class="control-label">  Password: </label>
-      <input type="password" name="password">
+  <div class="ui two column grid">
+  <div class="column">
+    <div class="ui fluid form segment">
+      <h3 class="ui header">Log-in</h3>
+      <div class="field">
+        <label>Email</label>
+        <input placeholder="Email" name="email" type="text">
+      </div>
+      <div class="field">
+        <label>Password</label>
+        <input type="password" name="password">
+      </div>
+      <button type="submit" class="ui blue submit button">Login</button>
     </div>
-    <button type="submit" class="btn btn-primary"> Login  </button>
+  </div>
   </div>
 </form>
+</section>
+
