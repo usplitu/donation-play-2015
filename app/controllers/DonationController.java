@@ -96,4 +96,10 @@ public class DonationController extends Controller
 				+ " percentachieved (long)= " + percentachieved);
 		return progress;
 	}
+	
+	  public static void renderReport()
+	  {
+	    List<Donation> donations = Donation.findAll();
+	    render(donations);
+	  }
 }
