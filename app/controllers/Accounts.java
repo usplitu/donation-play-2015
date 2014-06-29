@@ -45,20 +45,21 @@ public class Accounts extends Controller
 
     public static void authenticate(String email, String password) 
     {
-        Logger.info("Attempting to authenticate with " + email + ":" + password);
+            Logger.info("Attempting to authenticate with " + email + ":" + password);
 
-        User user = User.findByEmail(email);
-        if ((user != null) && (user.checkPassword(password) == true)) 
-        {
-            Logger.info("Successfull authentication of  " + user.firstName + " " + user.lastName);
-            session.put("logged_in_userid", user.id);
-        } 
-        else 
-        {
-            Logger.info("Authentication failed");
-            login();
+            User user = User.findByEmail(email);
+            if ((user != null) && (user.checkPassword(password) == true)) 
+            {
+                Logger.info("Successfull authentication of  " + user.firstName + " " + user.lastName);
+                session.put("logged_in_userid", user.id);
+                DonationController.index();
+            } 
+            else 
+            {
+                Logger.info("Authentication failed");
+                login();
+            }
         }
-    }
 
     public static User getCurrentUser() 
     {
