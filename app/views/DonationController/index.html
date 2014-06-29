@@ -1,63 +1,57 @@
-#{extends 'main.html' /} #{set title:'Donation Request' /} 
+#{extends 'main.html' /} #{set title:'Donation Request' /}
   <nav class="ui menu">
     <a class="ui item" href="/">Home</a>
     <a class="ui item" href="/signup">Sign Up</a>
     <a class="ui item" href="/login">Log In</a>
     <a class="ui active item" href="/donation">Make Donation</a>
-    <a class="ui item" href="/donation/report">Report</a>
     <a class="ui item" href="/logout">Log Out</a>
   </nav>
 
 
- <section class="ui segment"> 
-<h3>Welcome ${user.firstName}</h3>
-Please give generously
-
-    <form action="/donation/donate" method="POST">
-
-        <div class="ui four column grid">
-            <div class="column">
-
-                <div class="ui selection dropdown">
-                    <input name="amountDonated" type="hidden">
-                    <div class="default text">Amount</div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item" data-value="100">$100</div>
-                        <div class="item" data-value="200">$200</div>
-                        <div class="item" data-value="300">$300</div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="column">
-                <div class="ui form">
-                    <div class="grouped inline fields">
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input id="paypal" name="methodDonated" value="paypal"
-                                    checked="checked" type="radio"> <label for="paypal">PayPal</label>
-                            </div>
-                        </div>
-                        <div class="field">
-                            <div class="ui radio checkbox">
-                                <input id="direct" name="methodDonated" value="direct"
-                                    type="radio"> <label for="direct">Direct</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<section class="ui segment">
+  <h3>Welcome ${user.firstName}</h3>
+  Please give generously
+  <form action="/donation/donate" method="POST">
+    <div class="ui four column grid">
+      <div class="column">
+        <div class="ui selection dropdown">
+          <input name="amountDonated" type="hidden">
+          <div class="default text">Amount</div>
+          <i class="dropdown icon"></i>
+          <div class="menu">
+            <div class="item" data-value="100">$100</div>
+            <div class="item" data-value="200">$200</div>
+            <div class="item" data-value="300">$300</div>
+          </div>
         </div>
-        <button type="submit" class="ui blue submit button">Submit</button>
-    </form>
-</section>
-
-<div class="ui segment">
+      </div>
+      <div class="column">
+        <div class="ui form">
+          <div class="grouped inline fields">
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input id="paypal" name="methodDonated" value="paypal"
+                  checked="checked" type="radio"> <label
+                  for="paypal">PayPal</label>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input id="direct" name="methodDonated" value="direct"
+                  type="radio"> <label for="direct">Direct</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="ui blue submit button">Submit</button>
+  </form>
+  <div class="ui segment">
     <h4 class="ui header">Amount target achieved</h4>
     <div class="ui successful progress">
-        <div class="bar" style="width:${progress}"></div><!--"width:50%" "width:${progress}" -->
+      <div class="bar" style="width:${progress}"></div><!--"width:50%" "width:${progress}" -->
     </div>
-<script>$('.ui.selection.dropdown').dropdown('show');</script>
-</div>
+  </div>
+  <script>$('.ui.selection.dropdown').dropdown('enable');</script>
+</section>
