@@ -18,7 +18,7 @@ public class Accounts extends Controller
         render();
     }
 
-    public static void register(boolean usCitizen, String firstName,
+/*    public static void register(boolean usCitizen, String firstName,
             String lastName, String email, String password) 
     {
         Logger.info(usCitizen + " " + firstName + " " + lastName + " " + email
@@ -29,8 +29,14 @@ public class Accounts extends Controller
         user.save();
 
         index();
-    }
+    }*/
+public static void register(User user) 
+{
+    user.save();
 
+    index();
+}
+    
     public static void login() 
     {
         render();
