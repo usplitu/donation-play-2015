@@ -51,7 +51,7 @@ public class DonationController extends Controller
         } 
         else 
         {
-            addDonation(user, amountDonated,methodDonated);
+            addDonation(user, amountDonated, methodDonated);
         }
         index();
     }
@@ -62,7 +62,7 @@ public class DonationController extends Controller
      */
     private static void addDonation(User user, long amountDonated,String methodDonated) 
     {
-        Donation bal = new Donation(user, amountDonated,methodDonated);
+        Donation bal = new Donation(user, amountDonated, methodDonated);
         bal.save();
     }
     
