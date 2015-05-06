@@ -100,7 +100,8 @@ public class DonationController extends Controller
 	  {
 	    List<Donation> donations = Donation.findAll();
 	    Collections.shuffle(donations);
-	    Collections.sort(donations, new DonationDateComparator());
+	    DonationDateComparator c = new DonationDateComparator();
+	    //Collections.sort(donations, new DonationDateComparator());
 	    render(donations);
 	  }
 }
