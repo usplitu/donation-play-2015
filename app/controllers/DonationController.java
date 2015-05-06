@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,7 +63,7 @@ public class DonationController extends Controller
      */
     private static void addDonation(User user, long amountDonated,String methodDonated) 
     {
-        Donation bal = new Donation(user, amountDonated, methodDonated);
+        Donation bal = new Donation(user, amountDonated, methodDonated, new Date().toString());
         bal.save();
     }
     

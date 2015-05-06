@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -17,12 +15,12 @@ public class Donation extends Model
     @ManyToOne
     public User from;
 
-    public Donation(User from, long received, String methodDonated) 
+    public Donation(User from, long received, String methodDonated, String dateDonated) 
     {
         this.received 		= received;
         this.methodDonated 	= methodDonated;
         this.from 			= from;
         //this.dateDonated 	= new Date().toString();
-        this.dateDonated    = "May 6 21:34";
+        this.dateDonated    = dateDonated;
     }
 }
