@@ -1,14 +1,13 @@
 package controllers;
 
+import java.util.Collections;
+import java.util.List;
+
+import models.Donation;
+import models.User;
 import play.Logger;
-import play.db.jpa.JPA;
-import play.mvc.*;
-
-import java.util.*;
-
-import javax.persistence.Query;
-
-import models.*;
+import play.mvc.Controller;
+import utils.DonationDateComparator;
 
 public class DonationController extends Controller 
 {
@@ -100,6 +99,8 @@ public class DonationController extends Controller
 	  public static void renderReport()
 	  {
 	    List<Donation> donations = Donation.findAll();
+	    Collections.shuffle(donations);
+	    Collections.sort(donations, new DonationDateComparator());
 	    render(donations);
 	  }
 }
