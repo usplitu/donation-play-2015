@@ -1,13 +1,18 @@
   package models;
 
-  import java.util.ArrayList;
-  import javax.persistence.CascadeType;
   import javax.persistence.Entity;
-  import java.util.ArrayList;
-  import java.util.List;
-  import play.db.jpa.Model;
+import javax.persistence.Table;
 
+import play.db.jpa.Model;
+
+  /**
+   * User has been escaped: This is necessary because User is a reserved word in PostGreSQL
+   * However, if working in local host and wish to use localhost:9000/@db (for example) to view database
+   * Then it is necessary to temporarily comment out the line (i.e. @Table(name = "`User`") while testing with local host
+   *
+   */
   @Entity
+  @Table(name="`User`")
   public class User extends Model
   {
     public boolean usaCitizen;
