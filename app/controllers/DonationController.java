@@ -63,7 +63,7 @@ public class DonationController extends Controller
      */
     private static void addDonation(User user, long amountDonated,String methodDonated) 
     {
-        Donation bal = new Donation(user, amountDonated, methodDonated, new Date().toString());
+        Donation bal = new Donation(user, amountDonated, methodDonated);
         bal.save();
     }
     
