@@ -19,5 +19,5 @@ public class DonationDateComparator  implements Comparator<Donation>
 		Logger.info("In comparator: Donation o2 : " + o2.dateDonated.toString());
 		return o1.dateDonated.compareTo(o2.dateDonated);
 	}
-
+	
 }
