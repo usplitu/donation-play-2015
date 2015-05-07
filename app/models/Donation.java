@@ -12,7 +12,7 @@ public class Donation extends Model
 {
     public long received;
     public String methodDonated;
-    public String dateDonated;
+    public Date dateDonated;
 
     @ManyToOne
     public User from;
@@ -22,6 +22,6 @@ public class Donation extends Model
         this.received 		= received;
         this.methodDonated 	= methodDonated;
         this.from 			= from;
-        this.dateDonated 	= new Date().toString();
+        this.dateDonated 	= new Date();
     }
 }
