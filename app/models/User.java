@@ -12,7 +12,7 @@ import play.db.jpa.Model;
    *
    */
   @Entity
-  //@Table(name="`User`")
+  @Table(name="`User`")
   public class User extends Model
   {
     public boolean usaCitizen;
