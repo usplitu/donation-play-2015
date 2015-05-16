@@ -2,7 +2,6 @@
 #{set title:'Signup for Abamo' /}
 
    <nav class="ui menu">
-    <a class="ui item" href="/">Home</a>
     <a class="ui item active" href="/editprofile">Edit Profile</a>
     <a class="ui item" href="/logout">Log Out</a>
   </nav>
@@ -53,14 +52,14 @@
 </form>
 </section>
 <section class="ui segment">
-<!-- Provide option to cancel and return to previous view, the donation page -->
-<form action="/donation/donate" method="POST">
-  <div class="ui two column grid">
-    <div class="column">
-      <div class="ui fluid form segment">
-	    <button type="submit" class="ui blue submit button" value="cancel">Cancel</button>
-	  </div>
+  <!-- Provide option to cancel and return to previous view, the donation page -->
+  <form action="/donation/donate" method="POST">
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui fluid form segment">
+	      <button type="submit" class="ui blue submit button" value="cancel">Cancel</button>
+	    </div>
+      </div>
     </div>
-  </div>
   </form>
 </section>

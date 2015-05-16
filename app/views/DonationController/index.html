@@ -1,6 +1,5 @@
 #{extends 'main.html' /} #{set title:'Donation Request' /}
   <nav class="ui menu">
-    <a class="ui item" href="/">Home</a>
     <a class="ui item" href="/editprofile">Edit Profile</a> <!-- Story 3 -->
     <a class="ui active item" href="/donation">Make Donation</a>
     <a class="ui item" href="/donation/report">Report</a>
@@ -45,7 +44,7 @@
     <div class="ui error message"></div>
   </form>
   <div class="ui segment">
-    <h4 class="ui header">Amount target achieved</h4>
+    <h4 class="ui header">Amount target achieved : ${progress}</h4>
     <div class="ui successful progress">
       <div class="bar" style="width:${progress}"></div><!--"width:50%" "width:${progress}" -->
     </div>

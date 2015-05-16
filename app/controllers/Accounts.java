@@ -46,7 +46,7 @@ public static void register(User user)
     {
 
         session.clear();
-        index();
+        Welcome.index();
     }
 
     public static void authenticate(String email, String password) 
