@@ -2,6 +2,8 @@ User(homer):
     usaCitizen: true
     firstName: Homer
     lastName: Simpson
+    age:      50
+    location: Oregon
     email: homer@simpson.com
     password: secret
 
@@ -9,13 +11,17 @@ User(marge):
     usaCitizen: true
     firstName: Marge
     lastName: Simpson
+    age:      50
+    location: Oregon
     email: marge@simpson.com
     password: secret
-    
+
 User(lisa):
     usaCitizen: true
     firstName: Lisa
     lastName: Simpson
+    age:      10
+    location: Oregon
     email: lisa@simpson.com
     password: secret
     
@@ -23,6 +29,8 @@ User(bart):
     usaCitizen: true
     firstName: Bart
     lastName: Simpson
+    age:      12
+    location: Oregon
     email: bart@simpson.com
     password: secret
 
@@ -30,6 +38,8 @@ User(maggie):
     usaCitizen: true
     firstName: Maggie
     lastName: Simpson
+    age:      6
+    location: Oregon
     email: maggie@simpson.com
     password: secret
     

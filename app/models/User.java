@@ -12,13 +12,14 @@ import play.db.jpa.Model;
    *
    */
   @Entity
-  @Table(name="`User`")
+  // @Table(name="`User`")
   public class User extends Model
   {
     public boolean usaCitizen;
-    public String firstName;
-    public String lastName;
-
+    public String  firstName;
+    public String  lastName;
+    public int     age;		// Story 1
+    public String  location;// Story 1
 
     public String email;
     public String password;
@@ -26,6 +27,8 @@ import play.db.jpa.Model;
     public User(boolean usaCitizen,
               String firstName, 
               String lastName, 
+              int    age,
+              String location,
               String email, 
               String password
               )
@@ -33,6 +36,8 @@ import play.db.jpa.Model;
       this.usaCitizen = usaCitizen;
       this.firstName = firstName;
       this.lastName = lastName;
+      this.age      = age;
+      this.location = location;
       this.email = email;
       this.password = password;
     }
