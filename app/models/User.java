@@ -16,13 +16,12 @@ import play.db.jpa.Model;
   public class User extends Model
   {
     public boolean usaCitizen;
-    public String  firstName;
-    public String  lastName;
-    public int     age;		// Story 1
-    public String  location;// Story 1
-
-    public String email;
-    public String password;
+    public String  firstName ;
+    public String  lastName  ;
+    public int     age       ; // Story 1
+    public String  location  ; // Story 1
+    public String  email     ;
+    public String  password  ;
 
     public User(boolean usaCitizen,
               String firstName, 
