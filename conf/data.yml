@@ -3,7 +3,7 @@ User(homer):
     firstName: Homer
     lastName: Simpson
     age:      50
-    location: Oregon
+    state: Oregon
     email: homer@simpson.com
     password: secret
 
@@ -12,7 +12,7 @@ User(marge):
     firstName: Marge
     lastName: Simpson
     age:      50
-    location: Oregon
+    state: Oregon
     email: marge@simpson.com
     password: secret
 
@@ -21,7 +21,7 @@ User(lisa):
     firstName: Lisa
     lastName: Simpson
     age:      10
-    location: Oregon
+    state: Oregon
     email: lisa@simpson.com
     password: secret
     
@@ -30,7 +30,7 @@ User(bart):
     firstName: Bart
     lastName: Simpson
     age:      12
-    location: Oregon
+    state: Oregon
     email: bart@simpson.com
     password: secret
 
@@ -39,7 +39,7 @@ User(maggie):
     firstName: Maggie
     lastName: Simpson
     age:      6
-    location: Oregon
+    state: Oregon
     email: maggie@simpson.com
     password: secret
     

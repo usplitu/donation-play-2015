@@ -26,7 +26,7 @@ public class EditProfile extends Controller
 		to.firstName  = from.firstName ;
 		to.lastName   = from.lastName  ;
 		to.age        = from.age       ;
-		to.location   = from.location  ;
+		to.state      = from.state  ;
 		to.email      = from.email     ;
 		to.password   = from.password  ;		
 	}

@@ -19,7 +19,7 @@ import play.db.jpa.Model;
     public String  firstName ;
     public String  lastName  ;
     public int     age       ; // Story 1
-    public String  location  ; // Story 1
+    public String  state  ; // Story 1
     public String  email     ;
     public String  password  ;
 
@@ -36,7 +36,7 @@ import play.db.jpa.Model;
       this.firstName = firstName;
       this.lastName = lastName;
       this.age      = age;
-      this.location = location;
+      this.state = location;
       this.email = email;
       this.password = password;
     }
