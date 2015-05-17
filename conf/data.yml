@@ -3,7 +3,11 @@ User(homer):
     firstName: Homer
     lastName: Simpson
     age:      50
+    address1: Simpsonville
+    address2: "742 Evergreen Terrace"
+    city: Springfield
     state: Oregon
+    zipcode: 80085
     email: homer@simpson.com
     password: secret
 
@@ -12,7 +16,11 @@ User(marge):
     firstName: Marge
     lastName: Simpson
     age:      50
+    address1: Simpsonville
+    address2: "742 Evergreen Terrace"
+    city: Springfield
     state: Oregon
+    zipcode: 80085
     email: marge@simpson.com
     password: secret
 
@@ -21,7 +29,11 @@ User(lisa):
     firstName: Lisa
     lastName: Simpson
     age:      10
+    address1: Simpsonville
+    address2: "742 Evergreen Terrace"
+    city: Springfield
     state: Oregon
+    zipcode: 80085
     email: lisa@simpson.com
     password: secret
     
@@ -30,7 +42,11 @@ User(bart):
     firstName: Bart
     lastName: Simpson
     age:      12
+    address1: Simpsonville
+    address2: "742 Evergreen Terrace"
+    city: Springfield
     state: Oregon
+    zipcode: 80085
     email: bart@simpson.com
     password: secret
 
@@ -39,13 +55,10 @@ User(maggie):
     firstName: Maggie
     lastName: Simpson
     age:      6
+    address1: Simpsonville
+    address2: "742 Evergreen Terrace"
+    city: Springfield
     state: Oregon
+    zipcode: 80085
     email: maggie@simpson.com
     password: secret
-    
-    
-    
-    
-    
-
-    

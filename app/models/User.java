@@ -18,27 +18,39 @@ import play.db.jpa.Model;
     public boolean usaCitizen;
     public String  firstName ;
     public String  lastName  ;
-    public int     age       ; // Story 1
-    public String  state  ; // Story 1
+    public String  age       ; // Story 1
+    public String  address1  ; // Story 5
+    public String  address2  ;
+    public String  city      ;
+    public String  state     ; // Story 1
+    public String  zipcode   ; // Story 5
     public String  email     ;
     public String  password  ;
 
     public User(boolean usaCitizen,
               String firstName, 
               String lastName, 
-              int    age,
-              String location,
+              String age,
+              String address1,
+              String address2,
+              String city,
+              String state,
+              String zipcode,
               String email, 
               String password
               )
     {
-      this.usaCitizen = usaCitizen;
-      this.firstName = firstName;
-      this.lastName = lastName;
-      this.age      = age;
-      this.state = location;
-      this.email = email;
-      this.password = password;
+      this.usaCitizen 	= usaCitizen;
+      this.firstName 	= firstName;
+      this.lastName 	= lastName;
+      this.age      	= age;
+      this.address1 	= address1;
+      this.address2     = address2;
+      this.city         = city;
+      this.state 		= state;
+      this.zipcode      = zipcode;
+      this.email 		= email;
+      this.password 	= password;
     }
 
     public static User findByEmail(String email) 

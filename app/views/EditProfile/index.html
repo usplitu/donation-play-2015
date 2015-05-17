@@ -7,52 +7,62 @@
   </nav>
 
 <section class="ui segment">
-<h2>Edit your profile here</h2>
-<form action="/editprofile/edit" method="POST">
-<input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
-<label for="usCitizen">Tick to confirm you are a citizen of the USA</label>  
-  <div class="ui two column grid">
-  <div class="column">
-    <div class="ui fluid form segment">
-      <h3 class="ui header">Sign Up</h3>
-      <div class="two fields">
-        <div class="field">
-          <label>First Name</label>
-          <input value=${user.firstName} id="firstName" name="user.firstName" type="text">
+<h2>You may edit your profile here</h2>
+  <form action="/register" method="POST">
+    <input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
+    <label for="usCitizen">Tick to confirm you are a citizen of the USA</label>  
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui fluid form segment">
+          <div class="two fields">
+			<div class="field">
+              <input value=${user.firstName} id="firstName" name="user.firstName" type="text">
+            </div>
+            <div class="field">
+              <input value=${user.lastName} name="user.lastName" type="text">
+            </div>
+          </div>
+          <!-- Story 1 -->
+	      <div class="field">
+	        <input value=${user.age} name="user.age" type="text">      
+          </div>
+          <!-- Story 2 -->
+ 	      <div class="field">
+	        <input value=${user.address1} name="user.address1" type="text">
+          </div>      
+ 	      <div class="field">
+	        <input value=${user.address2} name="user.address2" type="text" maxlength="30">
+          </div>            
+ 	      <div class="field">
+	        <input value=${user.city} name="user.city" type="text">
+          </div>    
+ 	      <div class="field">
+	        <input value=${user.state} name="user.state" type="text">
+          </div> 
+ 	      <div class="field">
+	        <input value=${user.zipcode} name="user.zipcode" type="text">
+          </div>               
+	      <!--  -->  
+	      <div class="field">
+	        <input value=${user.email} name="user.email" type="text">
+	      </div>
+	      <div class="field">
+	        <input placeholder="Change password?" type="password" name="user.password">
+	      </div>
+	      <div class="inline field">
+	        <div class="ui checkbox">
+	          <input id="conditions" type="checkbox">
+	          <label for="conditions">I agree to the terms and conditions</label>
+	        </div>
+	      </div>
+          <button type="submit" class="ui blue submit button">Submit</button>
         </div>
-        <div class="field">
-          <label>Last Name</label>
-          <input value=${user.lastName} name="user.lastName" type="text">
-        </div>
       </div>
-      <!-- Story 1 -->
-	  <div class="field">
-		 <label>Age</label>
-	     <input value=${user.age} name="user.age" type="text">
-      </div>
- 	  <div class="field">
-		 <label>Location (State)</label>
-	     <input value=${user.state} name="user.state" type="text">
-      </div>
-      <!--  -->  
-      <div class="field">
-        <label>Email</label>
-        <input value=${user.email} name="user.email" type="text">
-      </div>
-      <div class="field">
-        <label>Password</label>
-        <input placeholder="New password needed?" type="password" name="user.password">
-      </div>
-      <div class="inline field">
-      </div>
-      <button type="submit" class="ui blue submit button" value="submit">Submit</button>
     </div>
-  </div>
-</div>
-</form>
+  </form>
 </section>
-<section class="ui segment">
-  <!-- Provide option to cancel and return to previous view, the donation page -->
+<!-- Provide option to cancel and return to previous view, the donation page -->
+<section class="ui segment">  
   <form action="/donation/donate" method="POST">
     <div class="ui two column grid">
       <div class="column">

@@ -1,51 +1,64 @@
 #{extends 'main.html' /}
 #{set title:'Signup for Abamo' /}
 
-   <nav class="ui menu">
-    <a class="ui item" href="/">Home</a>
-    <a class="ui active item" href="/signup">Sign Up</a>
-    <a class="ui item" href="/login">Log In</a>
-  </nav>
+<nav class="ui menu">
+  <a class="ui item" href="/">Home</a>
+  <a class="ui active item" href="/signup">Sign Up</a>
+  <a class="ui item" href="/login">Log In</a>
+</nav>
 
 <section class="ui segment">
-<form action="/register" method="POST">
-<input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
-<label for="usCitizen">Tick to confirm you are a citizen of the USA</label>  
-  <div class="ui two column grid">
-  <div class="column">
-    <div class="ui fluid form segment">
-      <h3 class="ui header">Sign Up</h3>
-      <div class="two fields">
-        <div class="field">
-          <input placeholder="First Name" id="firstName" name="user.firstName" type="text">
+  <form action="/register" method="POST">
+    <input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
+    <label for="usCitizen">Tick to confirm you are a citizen of the USA</label>  
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui fluid form segment">
+        <h3 class="ui header">Sign Up</h3>
+          <div class="two fields">
+			<div class="field">
+              <input placeholder="First Name" id="firstName" name="user.firstName" type="text">
+            </div>
+            <div class="field">
+              <input placeholder="Last Name" name="user.lastName" type="text">
+            </div>
+          </div>
+          <!-- Story 1 -->
+	      <div class="field">
+	        <input placeholder="Age" name="user.age" type="text">      
+          </div>
+          <!-- Story 2 -->
+ 	      <div class="field">
+	        <input placeholder="Address 1" name="user.address1" type="text">
+          </div>      
+ 	      <div class="field">
+	        <input placeholder="Address 2" name="user.address2" type="text">
+          </div>            
+ 	      <div class="field">
+	        <input placeholder="City" name="user.city" type="text">
+          </div>    
+ 	      <div class="field">
+	        <input placeholder="State" name="user.state" type="text">
+          </div> 
+ 	      <div class="field">
+	        <input placeholder="Zip Code" name="user.zipcode" type="text">
+          </div>               
+	      <!--  -->  
+	      <div class="field">
+	        <input placeholder="Email" name="user.email" type="text">
+	      </div>
+	      <div class="field">
+	        <input placeholder="Password" type="password" name="user.password">
+	      </div>
+	      <div class="inline field">
+	        <div class="ui checkbox">
+	          <input id="conditions" type="checkbox">
+	          <label for="conditions">I agree to the terms and conditions</label>
+	        </div>
+	      </div>
+          <button type="submit" class="ui blue submit button">Submit</button>
         </div>
-        <div class="field">
-          <input placeholder="Last Name" name="user.lastName" type="text">
-        </div>
       </div>
-      <!-- Story 1 -->
-	  <div class="field">
-	     <input placeholder="Age" name="user.age" type="text">
-      </div>
- 	    <div class="field">
-	      <input placeholder="State" name="user.state" type="text">
-      </div>
-      <!--  -->  
-      <div class="field">
-        <input placeholder="Email" name="user.email" type="text">
-      </div>
-      <div class="field">
-        <input placeholder="Password" type="password" name="user.password">
-      </div>
-      <div class="inline field">
-        <div class="ui checkbox">
-          <input id="conditions" type="checkbox">
-          <label for="conditions">I agree to the terms and conditions</label>
-        </div>
-      </div>
-      <button type="submit" class="ui blue submit button">Submit</button>
     </div>
-  </div>
-</div>
-</form>
+  </form>
 </section>
