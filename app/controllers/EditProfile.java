@@ -11,7 +11,9 @@ public class EditProfile extends Controller
     {
     	User user = Accounts.getCurrentUser();
     	if(user != null)
+    	{
     		render(user);
+    	}
     }
     
 	public static void edit(User user)
