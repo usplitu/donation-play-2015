@@ -8,63 +8,60 @@
 
 
 <section class="ui segment">
-<h2>You may edit your profile here</h2>
+  <h3>You may edit your profile here</h3>
   <form action="/editprofile/edit" method="POST">
-    <input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
-    <label for="usCitizen">Tick to confirm you are a citizen of the USA</label>  
-    <div class="ui two column grid">
-      <div class="column">
-        <div class="ui fluid form segment">
-          <div class="two fields">
-			<div class="field">
-              <input value=${user.firstName} id="firstName" name="user.firstName" type="text">
-            </div>
-            <div class="field">
-              <input value=${user.lastName} name="user.lastName" type="text">
-            </div>
-          </div>
-          <!-- Story 1 -->
-	      <div class="field">
-	        <input value=${user.age} name="user.age" type="text">      
-          </div>
-          <!-- Story 2 -->
- 	      <div class="field">
-	        <input value='${user.address1}' name="user.address1" type="text">
-          </div>      
- 	      <div class="field">
-	        <input value='${user.address2}' name="user.address2" type="text" maxlength="30">
-          </div>            
- 	      <div class="field">
-	        <input value=${user.city} name="user.city" type="text">
-          </div>    
- 	      <div class="field">
-	        <input value=${user.state} name="user.state" type="text">
-          </div> 
- 	      <div class="field">
-	        <input value=${user.zipcode} name="user.zipcode" type="text">
-          </div>               
-	      <!--  -->  
-	      <div class="inline field">
-	        <div class="ui checkbox">
-	          <input id="conditions" type="checkbox">
-	          <label for="conditions">I agree to the terms and conditions</label>
-	        </div>
-	      </div>
-          <button type="submit" class="ui blue submit button">Submit</button>
-        </div>
-      </div>
-    </div>
+
+  <div class="ui form">
+  
+	  <div class="fields">
+	    <div class="four wide field">
+	      <label>First name</label>
+	      <input value=${user.firstName} id="firstName" name="user.firstName" type="text">
+	    </div>   
+	    <div class="four wide field">
+	      <label>Last name</label>
+	      <input value=${user.lastName} name="user.lastName" type="text">
+	    </div>
+	    <div class="one wide field">
+	      <label>Age</label>
+	      <input value=${user.age} name="user.age" type="text"> 
+	    </div>      
+	  </div>
+
+	  <div class="fields">
+		  <div class="four wide field">
+		    <label>Address Line 1</label>
+		    <input value='${user.address1}' name="user.address1" type="text">
+		  </div> 
+		  <div class="four wide field">
+		    <label>Address Line 2</label>
+		    <input value='${user.address2}' name="user.address2" type="text">
+		  </div> 
+	  </div> 
+  
+	  <div class="fields"> 
+	    <div class="four wide field">
+	      <label>City</label>
+	      <input value=${user.city} name="user.city" type="text">
+	      </div>    
+	    <div class="four wide field">
+	      <label>State</label>
+	      <input value=${user.state} name="user.state" type="text">
+	      </div> 
+	    <div class="two wide field">
+	      <label>Zip Code</label>
+	      <input value=${user.zipcode} name="user.zipcode" type="text">
+	    </div>
+	  </div> 
+	   
+    <button type="submit" class="ui blue submit button">Submit</button>  
+  </div>
   </form>
 </section>
+ 
 <!-- Provide option to cancel and return to previous view, the donation page -->
-<section class="ui segment">  
+<section class="ui segment">
   <form action="/donation/donate" method="POST">
-    <div class="ui two column grid">
-      <div class="column">
-        <div class="ui fluid form segment">
-	      <button type="submit" class="ui blue submit button" value="cancel">Cancel</button>
-	    </div>
-      </div>
-    </div>
+    <button type="submit" class="ui blue submit button" value="cancel">Cancel</button>
   </form>
 </section>

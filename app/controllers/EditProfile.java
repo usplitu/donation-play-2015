@@ -24,19 +24,21 @@ public class EditProfile extends Controller
     	DonationController.index();
     }
 	
+	/**
+	 * Exclude checkbox (usa citizen), email & password
+	 * @param from
+	 * @param to
+	 */
 	private static void copyUser(User from, User to)
 	{
-		to.usaCitizen = from.usaCitizen;
 		to.firstName  = from.firstName ;
 		to.lastName   = from.lastName  ;
 		to.age        = from.age       ;
-		to.address1   = from.address1  ; // Story 5
+		to.address1   = from.address1  ; 
 		to.address2   = from.address2  ;
 		to.city       = from.city      ;
 		to.state      = from.state     ;
-		to.zipcode    = from.zipcode   ;
-		to.email      = from.email     ;
-		to.password   = from.password  ;		
+		to.zipcode    = from.zipcode   ;	
 	}
 
 }
