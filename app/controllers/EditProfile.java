@@ -21,7 +21,7 @@ public class EditProfile extends Controller
     	User currentUser = Accounts.getCurrentUser();
     	copyUser(user, currentUser);
     	currentUser.save();
-    	index();
+    	DonationController.index();
     }
 	
 	private static void copyUser(User from, User to)
