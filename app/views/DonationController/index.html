@@ -43,11 +43,19 @@
     <div class="ui blue submit button">Donate <i class="add icon"></i></div>
     <div class="ui error message"></div>
   </form>
-  <div class="ui segment">
-    <h4 class="ui header">Amount target achieved : ${progress}</h4>
-    <div class="ui teal progress">
-      <div class="bar" style="width:${progress}"></div><!--"width:50%" "width:${progress}" -->
+  <div class="ui segment">   
+    <div class="ui indicating progress" id="progress">
+      <div class="bar">
+        <div class="progress"></div>
+      </div>
+      <div class="label">Percent target received</div>
     </div>
-  </div>
-  <script src="@{'/public/javascripts/donate.js'}"></script>
+  </div> 
 </section>
+
+<script src="@{'/public/javascripts/donate.js'}"></script>
+<script>
+  $('#progress').progress('increment', '${donationprogress}'); 
+</script>
+
+<!-- http://semantic-ui.com/modules/progress.html -->

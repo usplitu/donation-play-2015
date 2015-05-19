@@ -24,11 +24,11 @@ public class DonationController extends Controller
 	    else
 	    {
 	      String prog = getPercentTargetAchieved();
-	      String progress = prog + "%";//a trailing % required to render in view progress bar
+	      String donationprogress = prog;// + "%";//a trailing % required to render in view progress bar
 
 	      Logger.info("Donation ctrler : user is " + user.email);
-	      Logger.info("Donation ctrler : percent target achieved " + progress);
-	      render(user, progress);
+	      Logger.info("Donation ctrler : percent target achieved " + donationprogress);
+	      render(user, donationprogress);
 	    }
 	  }
 
