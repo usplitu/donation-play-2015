@@ -1,9 +1,9 @@
 package controllers;
 
-import java.util.Date;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
+import models.Candidate;
 import models.Donation;
 import models.User;
 import play.Logger;
@@ -28,6 +28,7 @@ public class DonationController extends Controller
 
 	      Logger.info("Donation ctrler : user is " + user.email);
 	      Logger.info("Donation ctrler : percent target achieved " + donationprogress);
+	     
 	      render(user, donationprogress);
 	    }
 	  }
@@ -102,8 +103,29 @@ public class DonationController extends Controller
 	    List<Donation> donations = Donation.findAll();
 	    //Collections.shuffle(donations);
 	    //Collections.sort(donations, new DonationDateComparator());
-	    render(donations);
+	    
+      List<Candidate> candidates = Candidate.findAll();
+      
+	    render(donations, candidates);
 	  }
 	  
-	  
+	  public static void filterCandidates(String candidateEmail)
+	  {
+	    Logger.info("Filtering donations to " + candidateEmail);
+
+	    // list users mapped to this candidate
+	    List<User> users = User.findAll();
+	    List<Donation> donations = new ArrayList<Donation>();
+	    for (User user : users)
+	    {
+	      if (user.candidate.email.equals(candidateEmail))
+	      {
+	        donations.addAll(user.donations);
+	      }
+	    }
+	    List<Candidate> candidates = Candidate.findAll();
+	    //candidates.add(candidate);
+	    renderTemplate ("DonationController/renderReport.html", donations, candidates);
+	    
+	  }
 }
