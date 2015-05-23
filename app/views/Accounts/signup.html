@@ -49,7 +49,22 @@
 	      </div>
 	      <div class="field">
 	        <input placeholder="Password" type="password" name="user.password">
-	      </div>
+	      </div>	      
+	      <!-- Select a candidate  -->
+        <div class="ui dropdown labeled search icon button">
+          <i class="spy icon"></i>
+          <input name="candidateEmail" type="hidden">
+          <span class="text">Select Candidate</span>
+          <div class="menu">
+	          #{list items:candidates, as: 'candidate'}
+	            <div class="item" data-value="${candidate.email}">${candidate.firstName}</div>
+	          #{/list}
+          </div>
+          <div class="ui pointing left label teal">
+            My Candidate
+          </div>
+        </div> 
+        <!--  -->  
 	      <div class="inline field">
 	        <div class="ui checkbox">
 	          <input id="conditions" type="checkbox">
@@ -62,3 +77,4 @@
     </div>
   </form>
 </section>
+<script>$('.ui.dropdown').dropdown()</script>

@@ -1,3 +1,21 @@
+Candidate(abamo):
+    firstName: Abamo
+    lastName: Abamo
+    email: abamo@whitehouse.com
+    office: president
+
+Candidate(hilton):
+    firstName: Celery
+    lastName: Hilton
+    email: celery@whitehouse.com
+    office: president
+
+Candidate(presidentHomer):
+    firstName: Homer
+    lastName: Simpson
+    email: homer@whitehouse.com
+    office: president
+
 User(homer):
     usaCitizen: true
     firstName: Homer
@@ -10,6 +28,7 @@ User(homer):
     zipcode: 80085
     email: homer@simpson.com
     password: secret
+    candidate: presidentHomer
 
 User(marge):
     usaCitizen: true
@@ -23,6 +42,7 @@ User(marge):
     zipcode: 80085
     email: marge@simpson.com
     password: secret
+    candidate: presidentHomer
 
 User(lisa):
     usaCitizen: true
@@ -36,7 +56,8 @@ User(lisa):
     zipcode: 80085
     email: lisa@simpson.com
     password: secret
-    
+    candidate: hilton
+
 User(bart):
     usaCitizen: true
     firstName: Bart
@@ -49,6 +70,7 @@ User(bart):
     zipcode: 80085
     email: bart@simpson.com
     password: secret
+    candidate: abamo
 
 User(maggie):
     usaCitizen: true
@@ -62,3 +84,6 @@ User(maggie):
     zipcode: 80085
     email: maggie@simpson.com
     password: secret
+    candidate: abamo
+
+

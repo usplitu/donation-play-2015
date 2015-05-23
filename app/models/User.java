@@ -1,7 +1,7 @@
   package models;
 
   import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 import play.db.jpa.Model;
 
@@ -26,32 +26,8 @@ import play.db.jpa.Model;
     public String  zipcode   ; // Story 5
     public String  email     ;
     public String  password  ;
-
-    public User(boolean usaCitizen,
-              String firstName, 
-              String lastName, 
-              String age,
-              String address1,
-              String address2,
-              String city,
-              String state,
-              String zipcode,
-              String email, 
-              String password
-              )
-    {
-      this.usaCitizen 	= usaCitizen;
-      this.firstName 	= firstName;
-      this.lastName 	= lastName;
-      this.age      	= age;
-      this.address1 	= address1;
-      this.address2     = address2;
-      this.city         = city;
-      this.state 		= state;
-      this.zipcode      = zipcode;
-      this.email 		= email;
-      this.password 	= password;
-    }
+    @ManyToOne
+    public Candidate  candidate ;
 
     public static User findByEmail(String email) 
     {
@@ -61,5 +37,10 @@ import play.db.jpa.Model;
     public boolean checkPassword(String password) 
     {
         return this.password.equals(password);
+    }
+    
+    public void addCandidate(Candidate candidate)
+    {
+      this.candidate = candidate;
     }
   }

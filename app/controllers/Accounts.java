@@ -1,6 +1,9 @@
 package controllers;
 
-import models.*;
+import java.util.List;
+
+import models.Candidate;
+import models.User;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -9,11 +12,14 @@ public class Accounts extends Controller
 
   public static void signup()
   {
-    render();
+    List<Candidate> candidates = Candidate.findAll();
+    render(candidates);
   }
 
-  public static void register(User user)
+  public static void register(User user, String candidateEmail)
   {
+    Candidate candidate = Candidate.findByEmail(candidateEmail);
+    user.addCandidate(candidate);
     user.save();
     login();
   }
