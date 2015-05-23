@@ -6,30 +6,57 @@
      <a class="ui item" href="/editprofile">Edit Profile</a> <!-- Story 3 -->
     <a class="ui item" href="/logout">Log Out</a>
   </nav>
+  
+<section class="ui segment"> 
 <h4>List Donations</h4>
+	<table class="ui table segment">
+	  <thead>
+	    <tr>
+	      <th>Donors</th>
+	      <th>Age</th>
+	      <th>State</th>
+	      <th>Amount($)</th>
+	      <th>Method donated</th>
+	      <th>Date donated</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  #{list items:donations, as:'donation'}
+	    <tr>
+	      <td>${donation.from.firstName}&nbsp${donation.from.lastName}</td>
+	      <td>${donation.from.age}</td>
+	      <td>${donation.from.state}</td>
+	      <td>${donation.received}</td>
+	      <td>${donation.methodDonated}</td>
+	      <td>${donation.dateDonated}</td>
+	    </tr>
+	  #{/list}
+	  </tbody>
+	</table>
+</section>
 
-      <table class="ui table segment">
-        <thead>
-          <tr>
-            <th>Donors</th>
-            <th>Age</th>
-            <th>State</th>
-            <th>Amount($)</th>
-            <th>Method donated</th>
-            <th>Date donated</th>
-          </tr>
-        </thead>
-        <tbody>
-        #{list items:donations, as:'donation'}
-          <tr>
-            <td>${donation.from.firstName}&nbsp${donation.from.lastName}</td>
-            <td>${donation.from.age}</td>
-            <td>${donation.from.state}</td>
-            <td>${donation.received}</td>
-            <td>${donation.methodDonated}</td>
-            <td>${donation.dateDonated}</td>
-          </tr>
-        #{/list}
-        </tbody>
-      </table>
- 
+<section class="ui segment"> 
+<!-- Filter by candidates to whom donations made  --> 
+<div class="ui form" >
+	<form action="/donation/filterCandidates" method="POST">        
+	  <div class="ui dropdown labeled search icon button">
+	    <i class="spy icon"></i>
+	    <input name="candidateEmail" type="hidden">
+	    <span class="text">Select Candidate</span>
+	    <div class="menu">
+	      #{list items:candidates, as: 'candidate'}
+	        <div class="item" data-value="${candidate.email}">${candidate.firstName}</div>
+	      #{/list}
+	    </div>
+	    <div class="ui pointing left label teal">
+	      Donation Recipient
+	    </div>
+	    
+	  </div> 
+	  <button type="submit" class="ui blue submit button">Display</button>
+	</form>
+</div>
+
+
+</section> 
+ <script>$('.ui.dropdown').dropdown()</script>             

@@ -1,7 +1,10 @@
   package models;
 
-  import javax.persistence.Entity;
+  import java.util.List;
+
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
@@ -26,9 +29,13 @@ import play.db.jpa.Model;
     public String  zipcode   ; // Story 5
     public String  email     ;
     public String  password  ;
+    
     @ManyToOne
     public Candidate  candidate ;
-
+    
+    @OneToMany(mappedBy="from")
+    public List<Donation> donations;
+    
     public static User findByEmail(String email) 
     {
         return find("email", email).first();

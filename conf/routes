@@ -16,7 +16,7 @@ GET    /donation                    DonationController.index
 POST   /donation/donate             DonationController.donate
 
 GET    /donation/report             DonationController.renderReport
-
+POST   /donation/filterCandidates   DonationController.filterCandidates
 # Story 3
 # Edit Profile page
 GET   /editprofile				    EditProfile.index					
