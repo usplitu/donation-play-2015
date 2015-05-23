@@ -3,18 +3,21 @@ Candidate(abamo):
     lastName: Abamo
     email: abamo@whitehouse.com
     office: president
+    donations: [donation01, donation02]
 
 Candidate(hilton):
     firstName: Celery
     lastName: Hilton
     email: celery@whitehouse.com
     office: president
+    donations: [donation03, donation04]
 
 Candidate(presidentHomer):
     firstName: Homer
     lastName: Simpson
     email: homer@whitehouse.com
     office: president
+    donations: [donation05, donation06]
 
 User(homer):
     usaCitizen: true
@@ -86,4 +89,39 @@ User(maggie):
     password: secret
     candidate: hilton
 
+Donation(donation01):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: maggie
+
+Donation(donation02):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: bart
+
+Donation(donation03):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: lisa
+
+Donation(donation04):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: marge
+
+Donation(donation05):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: homer
+
+Donation(donation05):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: bart
 
