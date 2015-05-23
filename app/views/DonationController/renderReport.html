@@ -38,10 +38,14 @@
 </section>
 
 <section class="ui segment"> 
+<div class="ui grid">
+
+<div class="six wide column">
 <!-- Filter by candidates to whom donations made  --> 
 <div class="ui form" >
-	<form action="/donation/filterCandidates" method="POST">        
-	  <div class="ui dropdown labeled search icon button">
+	<form action="/donation/filterCandidates" method="POST"> 
+	<div class="ui fluid form segment">       
+	  <div class="ui dropdown">
 	    <i class="spy icon"></i>
 	    <input name="candidateEmail" type="hidden">
 	    <span class="text">Select Candidate</span>
@@ -52,14 +56,23 @@
 	    </div>
 	    <div class="ui pointing left label teal">
 	      Donation Recipient
-	    </div>
-	    
+	    </div>	    
 	  </div> 
 	  <button type="submit" class="ui blue submit button">Display</button>
+   </div>
 	</form>
 </div>
+</div><!-- ? wide col -->
 
-
+<div class="two wide column">
+<form action="/donation/report" method="GET">
+  <div class="ui fluid form segment">
+    <button type="submit" class="ui blue submit button">Refresh</button>
+  </div>
+</form>
+</div><!-- ? wide col -->
+</div><!-- ui grid -->
 </section> 
-<script>$('.ui.dropdown').dropdown()</script>   
-<!-- <script src="@{'/public/javascripts/report.js'}"></script>   -->       
+
+<script>$('.ui.dropdown').dropdown()</script>  
+<!-- <script src="@{'/public/javascripts/reportRefresh.js'}"></script> -->
