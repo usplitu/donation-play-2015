@@ -18,6 +18,7 @@
 	      <th>Amount($)</th>
 	      <th>Method donated</th>
 	      <th>Date donated</th>
+	      <th>Candidate</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -29,6 +30,7 @@
 	      <td>${donation.received}</td>
 	      <td>${donation.methodDonated}</td>
 	      <td>${donation.dateDonated}</td>
+	      <td>${donation.from.candidate.firstName} ${donation.from.candidate.lastName} </td>
 	    </tr>
 	  #{/list}
 	  </tbody>
@@ -59,4 +61,5 @@
 
 
 </section> 
- <script>$('.ui.dropdown').dropdown()</script>             
+<script>$('.ui.dropdown').dropdown()</script>   
+<!-- <script src="@{'/public/javascripts/report.js'}"></script>   -->       
