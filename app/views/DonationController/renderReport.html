@@ -74,7 +74,7 @@
       <input name="donorEmail" type="hidden">
       <span class="text">By Donor</span>
       <div class="menu">
-        #{list items:donations, as: 'donation'}
+        #{list items:uniqueDonations, as: 'donation'}
           <div class="item" data-value="${donation.from.email}">${donation.from.firstName}</div>
         #{/list}
       </div>

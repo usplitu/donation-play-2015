@@ -108,7 +108,8 @@ public class DonationController extends Controller
 	    
       List<Candidate> candidates = Candidate.findAll();
       List<String> states = getStates();
-	    render(donations, candidates, states);
+      List<Donation> uniqueDonations = getDonors();
+	    render(donations, candidates, states, uniqueDonations);
 	  }
 	  
 	  public static void filterCandidates(String candidateEmail)
@@ -127,7 +128,8 @@ public class DonationController extends Controller
 	    }
 	    List<Candidate> candidates = Candidate.findAll();
 	    List<String> states = getStates();
-	    renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
+	    List<Donation> uniqueDonations = getDonors();
+	    renderTemplate ("DonationController/renderReport.html", donations, candidates, states, uniqueDonations);
 	    
 	  }
 	  
@@ -146,7 +148,8 @@ public class DonationController extends Controller
 	      }
 	      List<Candidate> candidates = Candidate.findAll();
 	      List<String> states = getStates();
-	      renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
+	      List<Donation> uniqueDonations = getDonors();
+	      renderTemplate ("DonationController/renderReport.html", donations, candidates, states, uniqueDonations);
 	      
 	    }
 	   
@@ -166,7 +169,8 @@ public class DonationController extends Controller
        }
        List<Candidate> candidates = Candidate.findAll();
        List<String> states = getStates();
-       renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
+       List<Donation> uniqueDonations = getDonors();
+       renderTemplate ("DonationController/renderReport.html", donations, candidates, states, uniqueDonations);
        
      }
      
@@ -180,11 +184,34 @@ public class DonationController extends Controller
        }
        
        List<String> listStates = new ArrayList<String>();
-       for (String state : states)
-       {
-         listStates.add(state);
-         Logger.info(state);
-       }
+       listStates.addAll(states);
+       
        return listStates;
+     }
+     
+     /**
+      * Obtain a set of donors - no duplicates, i.e. unique list users
+      * This achieved by collection of Donation objects where
+      * no duplicate donors, i.e. a donor is present only once in the 
+      * list of Donations.
+      * In other words, a subset of all the donations is 
+      * assembled such that each donor is present once and once only.
+      * @return set of Donation objects in a list
+      */
+     private static List<Donation> getDonors()
+     {
+       List<Donation> listDonations = new ArrayList<Donation>();
+       Set<String> emailSet = new HashSet<String>();
+       List<Donation> donations = Donation.findAll();
+       for (Donation donation : donations)
+       {
+         // use set properties to filter out donation objects
+         // containing same User email
+         if(emailSet.add(donation.from.email))
+         {
+           listDonations.add(donation);
+         }
+       }      
+       return listDonations;
      }
 }
