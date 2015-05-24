@@ -17,7 +17,7 @@ Candidate(hilton):
 Candidate(gumble):
     firstName: Barney
     lastName: Gumble
-    email: Gumble@whitehouse.com
+    email: gumble@whitehouse.com
     office: president
     donations: [donation05, donation06]
     users: [marge, lisa, bart, maggie, homer]

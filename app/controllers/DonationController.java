@@ -15,26 +15,33 @@ import play.mvc.Controller;
 public class DonationController extends Controller 
 {
 
-	  public static void index()
-	  {
-	    User user = Accounts.getCurrentUser();
-	    if (user == null)
-	    {
-	      Logger.info("Donation class : Unable to getCurrentuser");
-	      Accounts.login();
-	    }
-	    else
-	    {
-	      String prog = getPercentTargetAchieved();
-	      String donationprogress = prog;// + "%";//a trailing % required to render in view progress bar
+    public static void index()
+    {
+      User user = Accounts.getCurrentUser();
+      if (user == null)
+      {
+        Logger.info("Donation class : Unable to getCurrentuser");
+        Accounts.login();
+      }
+      else
+      {
+        String prog = getPercentTargetAchieved();
+        String donationprogress = prog;// + "%";//a trailing % required to render in view progress bar
 
-	      Logger.info("Donation ctrler : user is " + user.email);
-	      Logger.info("Donation ctrler : percent target achieved " + donationprogress);
-	     
-	      List<Candidate> candidates = Candidate.findAll();
-	      render(user, donationprogress, candidates);
-	    }
-	  }
+        Logger.info("Donation ctrler : user is " + user.email);
+        Logger.info("Donation ctrler : percent target achieved " + donationprogress);
+       
+        List<Candidate> candidates = Candidate.findAll();
+        String currentCandidateEmail = session.get("currentCandidate");
+        Candidate candidate = Candidate.findByEmail(currentCandidateEmail);
+        String currentCandidate = "";
+        if (candidate != null)
+        {
+          currentCandidate = candidate.firstName + " " + candidate.lastName;
+        }
+        render(user, donationprogress, candidates, currentCandidate);
+      }
+    }
 
     /**
      * Log and save to database amount donated and method of donation, eg.
@@ -45,6 +52,7 @@ public class DonationController extends Controller
      */
     public static void donate(long amountDonated, String methodDonated, String candidateEmail) 
     {
+        session.put("currentCandidate", candidateEmail);
         Logger.info("amount donated " + amountDonated + " " + "method donated "
                 + methodDonated);
         Logger.info("candidateEmail " + candidateEmail);
@@ -78,24 +86,30 @@ public class DonationController extends Controller
      * Hard codes an arbitrary donation target amount
      * @return the target donation amount
      */
-	private static long getDonationTarget() 
-	{
-		// TODO Input this value thro' html template admin controlled
-		return 20000;
-	}
+  private static long getDonationTarget() 
+  {
+    // TODO Input this value thro' html template admin controlled
+    return 20000;
+  }
 
-	 /*
-   * 
+   /**
+   * Calculate the percentage of target achieved for current candidate
    * @return the percentage of donation target achieved
    */
   public static String getPercentTargetAchieved() 
   {
-   // List<Donation> allDonations = Donation.findAll();
-    User currentUser = Accounts.getCurrentUser();
     long total = 0;
-    for (Donation donation : currentUser.donations) 
+    List<Donation> donations = Donation.findAll();
+    String candidateEmail = session.get("currentCandidate");
+    Logger.info("getPercentTarget: candidateEmail is " + candidateEmail);
+    for (Donation donation : donations) 
     {
-      total += donation.received;
+      Logger.info("getPercentTargetAchieved " + donation.candidate.email);
+      
+      if (donation.candidate.email.equalsIgnoreCase(candidateEmail))
+      {
+        total += donation.received;
+      }
     }
     long target = getDonationTarget();
     long percentachieved = (total * 100 / target);
@@ -105,33 +119,33 @@ public class DonationController extends Controller
     return progress;
   }
   
-//	/*
-//	 * 
-//	 * @return the percentage of donation target achieved
-//	 */
-//	public static String getPercentTargetAchieved() 
-//	{
-//		List<Donation> allDonations = Donation.findAll();
-//		long total = 0;
-//		for (Donation donation : allDonations) 
-//		{
-//			total += donation.received;
-//		}
-//		long target = getDonationTarget();
-//		long percentachieved = (total * 100 / target);
-//		String progress = String.valueOf(percentachieved);
-//		Logger.info("Percent of target achieved (string) " + progress
-//				+ " percentachieved (long)= " + percentachieved);
-//		return progress;
-//	}
-	
-//	public static void selectCandidate(String candidateEmail)
-//	{
-//	  Logger.info("Candidate selected: " + candidateEmail);
-//	  Candidate candidate = Candidate.findByEmail(candidateEmail);
-//	  User user = Accounts.getCurrentUser();
+//  /*
+//   * 
+//   * @return the percentage of donation target achieved
+//   */
+//  public static String getPercentTargetAchieved() 
+//  {
+//    List<Donation> allDonations = Donation.findAll();
+//    long total = 0;
+//    for (Donation donation : allDonations) 
+//    {
+//      total += donation.received;
+//    }
+//    long target = getDonationTarget();
+//    long percentachieved = (total * 100 / target);
+//    String progress = String.valueOf(percentachieved);
+//    Logger.info("Percent of target achieved (string) " + progress
+//        + " percentachieved (long)= " + percentachieved);
+//    return progress;
+//  }
+  
+//  public static void selectCandidate(String candidateEmail)
+//  {
+//    Logger.info("Candidate selected: " + candidateEmail);
+//    Candidate candidate = Candidate.findByEmail(candidateEmail);
+//    User user = Accounts.getCurrentUser();
 //    user.addCandidate(candidate);
 //    user.save();
 //    index();
-//	}
+//  }
 }
