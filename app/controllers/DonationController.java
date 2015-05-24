@@ -124,8 +124,25 @@ public class DonationController extends Controller
 	      }
 	    }
 	    List<Candidate> candidates = Candidate.findAll();
-	    //candidates.add(candidate);
 	    renderTemplate ("DonationController/renderReport.html", donations, candidates);
 	    
 	  }
+	  
+	   public static void filterDonors(String donorEmail)
+	    {
+	      Logger.info("Filtering donations from " + donorEmail);
+
+	      List<Donation> donations = new ArrayList<Donation>();
+	      List<Donation> allDonations = Donation.findAll();
+	      for (Donation donation : allDonations)
+	      {
+	        if (donation.from.email.equals(donorEmail))
+	        {
+	          donations.add(donation);
+	        }
+	      }
+	      List<Candidate> candidates = Candidate.findAll();
+	      renderTemplate ("DonationController/renderReport.html", donations, candidates);
+	      
+	    }
 }

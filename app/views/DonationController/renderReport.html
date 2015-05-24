@@ -40,7 +40,7 @@
 <section class="ui segment"> 
 <div class="ui grid">
 
-<div class="six wide column">
+<div class="four wide column">
 <!-- Filter by candidates to whom donations made  --> 
 <div class="ui form" >
 	<form action="/donation/filterCandidates" method="POST"> 
@@ -48,31 +48,65 @@
 	  <div class="ui dropdown">
 	    <i class="spy icon"></i>
 	    <input name="candidateEmail" type="hidden">
-	    <span class="text">Select Candidate</span>
+	    <span class="text">By Candidate</span>
 	    <div class="menu">
 	      #{list items:candidates, as: 'candidate'}
 	        <div class="item" data-value="${candidate.email}">${candidate.firstName}</div>
 	      #{/list}
 	    </div>
-	    <div class="ui pointing left label teal">
+<!-- 	    <div class="ui pointing left label teal">
 	      Donation Recipient
-	    </div>	    
+	    </div>	 -->    
 	  </div> 
-	  <button type="submit" class="ui blue submit button">Display</button>
+	  <button type="submit" class="ui blue submit button">Filter</button>
    </div>
 	</form>
 </div>
 </div><!-- ? wide col -->
 
-<div class="two wide column">
-<form action="/donation/report" method="GET">
+<div class="four wide column">
+<!-- Filter by candidates to whom donations made  --> 
+<div class="ui form" >
+  <form action="/donation/filterDonors" method="POST"> 
+  <div class="ui fluid form segment">       
+    <div class="ui dropdown">
+      <i class="spy icon"></i>
+      <input name="donorEmail" type="hidden">
+      <span class="text">By Donor</span>
+      <div class="menu">
+        #{list items:donations, as: 'donation'}
+          <div class="item" data-value="${donation.from.email}">${donation.from.firstName}</div>
+        #{/list}
+      </div>
+<!--      <div class="ui pointing left label teal">
+        Donation Recipient
+      </div>   -->    
+    </div> 
+    <button type="submit" class="ui blue submit button">Filter</button>
+   </div>
+  </form>
+</div>
+</div><!-- ? wide col -->
+
+<div class="three wide column">
+<form action="/donation/filterState" method="POST">
   <div class="ui fluid form segment">
-    <button type="submit" class="ui blue submit button">Refresh</button>
+    <button type="submit" class="ui blue submit button">By State Filter</button>
   </div>
 </form>
 </div><!-- ? wide col -->
+
+<div class="three wide column">
+<form action="/donation/report" method="GET">
+  <div class="ui fluid form segment">
+    <button type="submit" class="ui blue submit button">All Donations</button>
+  </div>
+</form>
+</div><!-- ? wide col -->
+
 </div><!-- ui grid -->
 </section> 
+
 
 <script>$('.ui.dropdown').dropdown()</script>  
 <!-- <script src="@{'/public/javascripts/reportRefresh.js'}"></script> -->
