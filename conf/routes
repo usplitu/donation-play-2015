@@ -18,7 +18,7 @@ POST   /donation/donate             DonationController.donate
 GET    /donation/report             DonationController.renderReport
 POST   /donation/filterCandidates   DonationController.filterCandidates
 POST   /donation/filterDonors       DonationController.filterDonors
-POST   /donation/filterState        DonationController.filterState
+POST   /donation/filterStates       DonationController.filterStates
 
 
 # Story 3

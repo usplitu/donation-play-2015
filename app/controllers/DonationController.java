@@ -1,7 +1,9 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import models.Candidate;
 import models.Donation;
@@ -105,8 +107,8 @@ public class DonationController extends Controller
 	    //Collections.sort(donations, new DonationDateComparator());
 	    
       List<Candidate> candidates = Candidate.findAll();
-      
-	    render(donations, candidates);
+      List<String> states = getStates();
+	    render(donations, candidates, states);
 	  }
 	  
 	  public static void filterCandidates(String candidateEmail)
@@ -118,13 +120,14 @@ public class DonationController extends Controller
 	    List<Donation> donations = new ArrayList<Donation>();
 	    for (User user : users)
 	    {
-	      if (user.candidate.email.equals(candidateEmail))
+	      if (user.candidate.email.equalsIgnoreCase(candidateEmail))
 	      {
 	        donations.addAll(user.donations);
 	      }
 	    }
 	    List<Candidate> candidates = Candidate.findAll();
-	    renderTemplate ("DonationController/renderReport.html", donations, candidates);
+	    List<String> states = getStates();
+	    renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
 	    
 	  }
 	  
@@ -136,13 +139,52 @@ public class DonationController extends Controller
 	      List<Donation> allDonations = Donation.findAll();
 	      for (Donation donation : allDonations)
 	      {
-	        if (donation.from.email.equals(donorEmail))
+	        if (donation.from.email.equalsIgnoreCase(donorEmail))
 	        {
 	          donations.add(donation);
 	        }
 	      }
 	      List<Candidate> candidates = Candidate.findAll();
-	      renderTemplate ("DonationController/renderReport.html", donations, candidates);
+	      List<String> states = getStates();
+	      renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
 	      
 	    }
+	   
+     public static void filterStates(String state)
+     {
+       Logger.info("Filtering donations from donors resident in the stae of " + state);
+       
+       List<User> users = User.findAll();      
+       List<Donation> donations = new ArrayList<Donation>();
+      
+       for (User user : users)
+       {
+         if (user.state.equalsIgnoreCase(state))
+         {
+           donations.addAll(user.donations);
+         }
+       }
+       List<Candidate> candidates = Candidate.findAll();
+       List<String> states = getStates();
+       renderTemplate ("DonationController/renderReport.html", donations, candidates, states);
+       
+     }
+     
+     private static List<String> getStates()
+     {
+       Set<String> states = new HashSet<String>();
+       List<User> users = User.findAll();
+       for (User user : users)
+       {
+         states.add(user.state);
+       }
+       
+       List<String> listStates = new ArrayList<String>();
+       for (String state : states)
+       {
+         listStates.add(state);
+         Logger.info(state);
+       }
+       return listStates;
+     }
 }

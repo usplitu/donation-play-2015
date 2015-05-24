@@ -55,7 +55,7 @@ User(lisa):
     address1: Simpsonville
     address2: "742 Evergreen Terrace"
     city: Springfield
-    state: Oregon
+    state: Idaho
     zipcode: 80085
     email: lisa@simpson.com
     password: secret
@@ -69,7 +69,7 @@ User(bart):
     address1: Simpsonville
     address2: "742 Evergreen Terrace"
     city: Springfield
-    state: Oregon
+    state: Maine
     zipcode: 80085
     email: bart@simpson.com
     password: secret
@@ -83,7 +83,7 @@ User(maggie):
     address1: Simpsonville
     address2: "742 Evergreen Terrace"
     city: Springfield
-    state: Oregon
+    state: Maine
     zipcode: 80085
     email: maggie@simpson.com
     password: secret

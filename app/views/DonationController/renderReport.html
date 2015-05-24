@@ -65,7 +65,7 @@
 </div><!-- ? wide col -->
 
 <div class="four wide column">
-<!-- Filter by candidates to whom donations made  --> 
+<!-- Filter by donors from whom donations received  --> 
 <div class="ui form" >
   <form action="/donation/filterDonors" method="POST"> 
   <div class="ui fluid form segment">       
@@ -88,12 +88,28 @@
 </div>
 </div><!-- ? wide col -->
 
-<div class="three wide column">
-<form action="/donation/filterState" method="POST">
-  <div class="ui fluid form segment">
-    <button type="submit" class="ui blue submit button">By State Filter</button>
-  </div>
-</form>
+<div class="four wide column">
+<!-- Filter by state in which donor resides  --> 
+<div class="ui form" >
+  <form action="/donation/filterStates" method="POST"> 
+  <div class="ui fluid form segment">       
+    <div class="ui dropdown">
+      <i class="world icon"></i>
+      <input name="state" type="hidden">
+      <span class="text">By State</span>
+      <div class="menu">
+        #{list items:states, as: 'state'}
+          <div class="item" data-value="${state}">${state}</div>
+        #{/list}
+      </div>
+<!--      <div class="ui pointing left label teal">
+        Donation Recipient
+      </div>   -->    
+    </div> 
+    <button type="submit" class="ui blue submit button">Filter</button>
+   </div>
+  </form>
+</div>
 </div><!-- ? wide col -->
 
 <div class="three wide column">
