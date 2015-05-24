@@ -1,0 +1,41 @@
+#{extends 'main.html' /}
+#{set title:'Signup for Abamo' /}
+
+<nav class="ui menu">
+  <a class="ui item" href="/">Home</a>
+  <a class="ui item" href="/signup">Sign Up</a>
+  <a class="ui item" href="/login">Log In</a>
+</nav>
+
+<section class="ui segment">
+  <form action="/candidate/register" method="POST">
+     
+      
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui fluid form segment">
+        <h3 class="ui header">Candidate registration</h3>
+          <div class="two fields">
+      <div class="field">
+              <input placeholder="First Name" id="firstName" name="candidate.firstName" type="text">
+            </div>
+            <div class="field">
+              <input placeholder="Last Name" name="candidate.lastName" type="text">
+            </div>
+          </div>              
+        <!--  -->  
+        <div class="field">
+          <input placeholder="Email" name="candidate.email" type="text">
+        </div>
+        <div class="field">
+          <input placeholder="Password" type="password" name="candidate.password">
+        </div>  
+        <div class="field">
+          <input placeholder="Office" name="candidate.office" type="text">
+        </div>      
+          <button type="submit" class="ui blue submit button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

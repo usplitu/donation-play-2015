@@ -16,10 +16,11 @@ public class Accounts extends Controller
     render(candidates);
   }
 
-  public static void register(User user, String candidateEmail)
+  public static void register(User user)
+  //public static void register(User user, String candidateEmail)
   {
-    Candidate candidate = Candidate.findByEmail(candidateEmail);
-    user.addCandidate(candidate);
+/*    Candidate candidate = Candidate.findByEmail(candidateEmail);
+    user.addCandidate(candidate);*/
     user.save();
     login();
   }

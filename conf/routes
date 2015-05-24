@@ -14,18 +14,21 @@ POST   /register                    Accounts.register
 # Donation page
 GET    /donation                    DonationController.index
 POST   /donation/donate             DonationController.donate
-
+POST   /donation/selectCandidate    DonationController.selectCandidate
+# Report page
 GET    /donation/report             Report.index
 POST   /donation/filterCandidates   Report.filterCandidates
 POST   /donation/filterDonors       Report.filterDonors
 POST   /donation/filterStates       Report.filterStates
 
-
 # Story 3
 # Edit Profile page
-GET   /editprofile				    EditProfile.index					
-POST  /editprofile/edit				EditProfile.edit
+GET   /editprofile				          EditProfile.index					
+POST  /editprofile/edit				      EditProfile.edit
 
+# Candidate
+GET  /candidate                     CandidateController.index
+POST /candidate/register            CandidateController.register  
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

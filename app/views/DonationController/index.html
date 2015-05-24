@@ -9,48 +9,81 @@
 <section class="ui segment">
   <h3>Welcome ${user.firstName}</h3>
   Please give generously
-  <form class="ui form" action="/donation/donate" method="POST">
-    <div class="ui four column grid">
+
+  <div class="ui grid">
+    <div class="three column row">
       <div class="column">
-        <div class="ui selection dropdown">
-          <input name="amountDonated" type="hidden">
-          <div class="default text">Amount</div>
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <div class="item" data-value="100">$100</div>
-            <div class="item" data-value="500">$500</div>
-            <div class="item" data-value="1000">$1000</div>
-          </div>
-        </div>
-      </div>
-      <div class="column">
-        <div class="grouped inline fields">
-          <div class="field">
-            <div class="ui radio checkbox">
-              <input id="paypal" name="methodDonated" value="paypal" checked="checked" type="radio"> 
-              <label for="paypal">PayPal</label>
-            </div>
-          </div>
-          <div class="field">
-            <div class="ui radio checkbox">
-              <input id="direct" name="methodDonated" value="direct" type="radio"> 
-              <label for="direct">Direct</label>
-            </div>
-          </div>
+        <div class="ui segment">
+          <!-- <form class="ui form" action="/donation/selectCandidate" method="POST"> -->
+          <form class="ui form" action="/donation/donate" method="POST">
+		        <div class="ui four column grid">
+		          <div class="column">
+			          <div class="ui selection dropdown">
+			            <input name="candidateEmail" type="hidden">
+			            <div class="default text">Select Candidate</div>
+			            <i class="dropdown icon"></i>
+			            <div class="menu">
+			              #{list items:candidates, as: 'candidate'}
+			                <div class="item" data-value="${candidate.email}">${candidate.firstName} ${candidate.lastName}</div>
+			              #{/list}
+			            </div>
+			          </div>
+			        </div>
+			      </div>
+<!-- 			    <div class="ui blue submit button">Select Candidate <i class="add icon"></i></div>
+ -->			    <div class="ui error message"></div>
+			   <!--  </form> -->
+       <!--  </div> -->
+      <!-- </div>  -->   
+      <!-- <div class="column"> -->
+        <!-- <div class="ui segment"> -->
+				  <!-- <form class="ui form" action="/donation/donate" method="POST"> -->
+				    <div class="ui two column grid">
+				      <div class="column">
+				        <div class="ui selection dropdown">
+				          <input name="amountDonated" type="hidden">
+				          <div class="default text">Amount</div>
+				          <i class="dropdown icon"></i>
+				          <div class="menu">
+				            <div class="item" data-value="100">$100</div>
+				            <div class="item" data-value="500">$500</div>
+				            <div class="item" data-value="1000">$1000</div>
+				          </div>
+				        </div>
+				      </div>
+				      <div class="column">
+				        <div class="grouped inline fields">
+				          <div class="field">
+				            <div class="ui radio checkbox">
+				              <input id="paypal" name="methodDonated" value="paypal" checked="checked" type="radio"> 
+				              <label for="paypal">PayPal</label>
+				            </div>
+				          </div>
+				          <div class="field">
+				            <div class="ui radio checkbox">
+				              <input id="direct" name="methodDonated" value="direct" type="radio"> 
+				              <label for="direct">Direct</label>
+				            </div>
+				          </div>
+				        </div>
+				      </div>
+				    </div>
+				    <div class="ui blue submit button">Donate <i class="add icon"></i></div>
+				    <div class="ui error message"></div>
+				  </form>
         </div>
       </div>
     </div>
-    <div class="ui blue submit button">Donate <i class="add icon"></i></div>
-    <div class="ui error message"></div>
-  </form>
-  <div class="ui segment">   
-    <div class="ui indicating progress" id="progress">
-      <div class="bar">
-        <div class="progress"></div>
-      </div>
-      <div class="label">Percent target received</div>
-    </div>
-  </div> 
+  </div>
+	<!-- Donation progress  -->
+	<div class="ui segment">   
+	  <div class="ui indicating progress" id="progress">
+	    <div class="bar">
+	      <div class="progress"></div>
+	    </div>
+	    <div class="label">Percent target received</div>
+	  </div>
+	</div> 
 </section>
              
 <script src="@{'/public/javascripts/donate.js'}"></script>

@@ -3,7 +3,7 @@
   import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
@@ -30,8 +30,10 @@ import play.db.jpa.Model;
     public String  email     ;
     public String  password  ;
     
-    @ManyToOne
-    public Candidate  candidate ;
+/*    @ManyToOne
+    public Candidate  candidate ;*/
+    @ManyToMany
+    public List<Candidate> candidates;
     
     @OneToMany(mappedBy="from")
     public List<Donation> donations;
@@ -48,6 +50,7 @@ import play.db.jpa.Model;
     
     public void addCandidate(Candidate candidate)
     {
-      this.candidate = candidate;
+      //this.candidate = candidate;
+      candidates.add(candidate);
     }
   }
