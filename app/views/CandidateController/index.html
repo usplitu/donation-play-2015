@@ -4,6 +4,7 @@
    <nav class="ui menu">
     <a class="ui item" href="/administrator/report">Administrator Home</a>
     <a class="ui active item" href="/login">Register Candidate</a>
+        <a class="ui item" href="/office">Create Office</a>
     <a class="ui item" href="/administrator/logout">Administrator Logout</a>
   </nav>
 
@@ -29,13 +30,25 @@
         </div>
         <div class="field">
           <input placeholder="Password" type="password" name="candidate.password">
-        </div>  
-        <div class="field">
-          <input placeholder="Office" name="candidate.office" type="text">
-        </div>      
-          <button type="submit" class="ui blue submit button">Submit</button>
+        </div>   
+			  <div class="ui fluid form segment">       
+			    <div class="ui dropdown">
+			      <i class="world icon"></i>
+			      <input name="officeTitle" type="hidden">
+			      <span class="text">Office</span>
+			      <div class="menu">
+			        #{list items:offices, as: 'office'}
+			          <div class="item" data-value="${office.title}">${office.title}</div>
+			        #{/list}
+			      </div>   
+			    </div> 
+			  </div>                
+        <button type="submit" class="ui blue submit button">Submit</button>
         </div>
       </div>
     </div>
   </form>
 </section>
+<script>
+$('.ui.dropdown').dropdown();
+</script>

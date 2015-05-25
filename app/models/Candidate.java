@@ -14,13 +14,16 @@ public class Candidate extends Model
   public String firstName;
   public String lastName;
   public String email;
-  public String office;
+  //public String office;
   
   @ManyToMany(mappedBy="candidates")
   public List<User> users;
   
+//  @ManyToOne
+//  public Admin administrator;
+  
   @ManyToOne
-  public Admin administrator;
+  public Office office;
   
   public static Candidate findByEmail(String email)
   {
@@ -30,5 +33,10 @@ public class Candidate extends Model
   public void addUser(User user)
   {
     users.add(user);
+  }
+  
+  public void addOffice(Office office)
+  {
+    this.office = office;
   }
 }

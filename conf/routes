@@ -37,6 +37,9 @@ GET  /administrator/report         Administrator.report
 POST /administrator/login          Administrator.authenticate
 GET  /administrator/logout         Administrator.logout
 
+# Office
+GET /office                        OfficeController.index
+POST /office/create                OfficeController.register
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

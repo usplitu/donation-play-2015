@@ -13,8 +13,8 @@ public class Admin extends Model
   public String username;
   public String password;
 
-  @OneToMany(mappedBy = "administrator")
-  public List<Candidate> candidates = new ArrayList<Candidate>();
+//  @OneToMany(mappedBy = "administrator")
+//  public List<Candidate> candidates = new ArrayList<Candidate>();
 
   public Admin(String username, String password)
   {

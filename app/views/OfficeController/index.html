@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Create Office' /}
+   <nav class="ui menu">
+    <a class="ui item" href="/administrator/report">Administrator Home</a>
+    <a class="ui item" href="/candidate/register">Register Candidate</a>
+    <a class="ui active item" href="/office">Create Office</a>
+    <a class="ui item" href="/administrator/logout">Administrator Logout</a>
+  </nav>
+
+<section class="ui segment">
+  <form action="/office/create" method="POST">
+    <div class="ui two column grid">
+      <div class="column">
+        <div class="ui fluid form segment">
+        <h3 class="ui header">Create New Office</h3>
+          <div class="two fields">
+      <div class="field">
+              <input placeholder="Office Title" id="title" name="office.title" type="text">
+            </div>
+            <div class="field">
+              <input placeholder="Office description" name="office.description" type="text">
+            </div>
+          </div>              
+          <button type="submit" class="ui blue submit button">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

@@ -55,13 +55,8 @@
 	  </div> 
 	   
     <button type="submit" class="ui blue submit button">Submit</button>  
+    <input type="button" class="ui blue submit button" value="Cancel" onClick="history.go(-1);return true;"></input>
   </div>
   </form>
 </section>
  
-<!-- Provide option to cancel and return to previous view, the donation page -->
-<section class="ui segment">
-  <form action="/donation/donate" method="POST">
-    <button type="submit" class="ui blue submit button" value="cancel">Cancel</button>
-  </form>
-</section>

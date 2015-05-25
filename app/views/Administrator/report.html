@@ -3,7 +3,8 @@
 
    <nav class="ui menu">
     <a class="ui active item" href="/administrator/report">Administrator Home</a>
-<!--     <a class="ui item" href="/candidate/register">Register Candidate</a> -->
+    <a class="ui item" href="/candidate/register">Register Candidate</a>
+    <a class="ui item" href="/office">Create Office</a>
     <a class="ui item" href="/administrator/logout">Administrator Logout</a>
   </nav>
   
@@ -43,7 +44,7 @@
      #{list items:candidates, as:'candidate'}
         <td>${candidate.firstName} ${candidate.lastName}</td>
         <td>${candidate.email}</td>
-        <td>${candidate.office}</td>
+        <td>${candidate.office.title}</td>
     </tr>
     #{/list}
     </tbody>

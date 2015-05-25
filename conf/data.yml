@@ -1,27 +1,34 @@
+Office(president):
+    title: president
+    description: chief of the armed forces and drone squadron
+    candidates: [hilton, gumble]
+
+Office(vicepresident):
+    title: vicepresident
+    description: strongly supports the president
+    candidates: [abamo]
+
 Candidate(abamo):
     firstName: Abel
     lastName: Abamo
     email: able@whitehouse.com
-    office: president
-    donations: [donation01, donation02]
-    users: [homer, gumble]
+    office: vicepresident
+    donations: [donation01, donation02, donation05]
 
 Candidate(hilton):
     firstName: Celery
     lastName: Hilton
     email: celery@whitehouse.com
     office: president
-    donations: [donation03, donation04]
-    users: [homer]
+    donations: [donation04]
 
 Candidate(gumble):
     firstName: Barney
     lastName: Gumble
     email: gumble@whitehouse.com
     office: president
-    donations: [donation05, donation06]
-    users: [marge, lisa, bart, maggie, homer]
-    
+    donations: [donation03, donation06]
+
 User(homer):
     usaCitizen: true
     firstName: Homer
@@ -34,23 +41,8 @@ User(homer):
     zipcode: 80085
     email: homer@simpson.com
     password: secret
-    candidates: [gumble, abamo]
-    donations: [donation05]
-
-User(marge):
-    usaCitizen: true
-    firstName: Marge
-    lastName: Simpson
-    age:      50
-    address1: Simpsonville
-    address2: "742 Evergreen Terrace"
-    city: Springfield
-    state: Oregon
-    zipcode: 80085
-    email: marge@simpson.com
-    password: secret
-    candidates: [gumble, hilton, abamo]
-    donations: [donation04]
+    candidates: [hilton, abamo, gumble]
+    donations: [donation04, donation05, donation06]
 
 User(lisa):
     usaCitizen: true
@@ -64,80 +56,47 @@ User(lisa):
     zipcode: 80085
     email: lisa@simpson.com
     password: secret
-    candidates: [gumble, hilton, abamo]
-    donations: [donation03]
-
-User(bart):
-    usaCitizen: true
-    firstName: Bart
-    lastName: Simpson
-    age:      12
-    address1: Simpsonville
-    address2: "742 Evergreen Terrace"
-    city: Springfield
-    state: Maine
-    zipcode: 80085
-    email: bart@simpson.com
-    password: secret
-    candidates: [hilton, abamo]
-    donations: [donation02, donation06]
-
-User(maggie):
-    usaCitizen: true
-    firstName: Maggie
-    lastName: Simpson
-    age:      6
-    address1: Simpsonville
-    address2: "742 Evergreen Terrace"
-    city: Springfield
-    state: Maine
-    zipcode: 80085
-    email: maggie@simpson.com
-    password: secret
-    candidates: [gumble, abamo]
-    donations: [donation01]
+    candidates: [abamo, gumble]
+    donations: [donation01, donation02, donation03]
 
 Donation(donation01):
-    received: 1000
-    methodDonated: direct
-    dateDonated: "2015-05-23 16:53:08.543"
-    from: maggie
-    candidate: gumble
-
-
-Donation(donation02):
-    received: 1000
-    methodDonated: direct
-    dateDonated: "2015-05-23 16:53:08.543"
-    from: bart
-    candidate: hilton
-
-Donation(donation03):
     received: 1000
     methodDonated: direct
     dateDonated: "2015-05-23 16:53:08.543"
     from: lisa
     candidate: abamo
 
-Donation(donation04):
+Donation(donation02):
     received: 1000
     methodDonated: direct
     dateDonated: "2015-05-23 16:53:08.543"
-    from: marge
+    from: lisa
+    candidate: abamo
+
+Donation(donation03):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: lisa
     candidate: gumble
 
-Donation(donation05):
+Donation(donation04):
     received: 1000
     methodDonated: direct
     dateDonated: "2015-05-23 16:53:08.543"
     from: homer
     candidate: hilton
 
+Donation(donation05):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: homer
+    candidate: abamo
+
 Donation(donation06):
     received: 1000
     methodDonated: direct
     dateDonated: "2015-05-23 16:53:08.543"
-    from: bart
-    candidate: abamo
-
-
+    from: homer
+    candidate: gumble
