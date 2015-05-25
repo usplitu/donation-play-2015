@@ -114,38 +114,7 @@ public class DonationController extends Controller
     long target = getDonationTarget();
     long percentachieved = (total * 100 / target);
     String progress = String.valueOf(percentachieved);
-    Logger.info("Percent of target achieved (string) " + progress
-        + " percentachieved (long)= " + percentachieved);
+    Logger.info("Percent of target achieved " + progress + " percent achieved = " + percentachieved);
     return progress;
   }
-  
-//  /*
-//   * 
-//   * @return the percentage of donation target achieved
-//   */
-//  public static String getPercentTargetAchieved() 
-//  {
-//    List<Donation> allDonations = Donation.findAll();
-//    long total = 0;
-//    for (Donation donation : allDonations) 
-//    {
-//      total += donation.received;
-//    }
-//    long target = getDonationTarget();
-//    long percentachieved = (total * 100 / target);
-//    String progress = String.valueOf(percentachieved);
-//    Logger.info("Percent of target achieved (string) " + progress
-//        + " percentachieved (long)= " + percentachieved);
-//    return progress;
-//  }
-  
-//  public static void selectCandidate(String candidateEmail)
-//  {
-//    Logger.info("Candidate selected: " + candidateEmail);
-//    Candidate candidate = Candidate.findByEmail(candidateEmail);
-//    User user = Accounts.getCurrentUser();
-//    user.addCandidate(candidate);
-//    user.save();
-//    index();
-//  }
 }
