@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Administrator Report' /}
+
+   <nav class="ui menu">
+    <a class="ui active item" href="/administrator/report">Administrator Home</a>
+<!--     <a class="ui item" href="/candidate/register">Register Candidate</a> -->
+    <a class="ui item" href="/administrator/logout">Administrator Logout</a>
+  </nav>
+  
+<section class="ui segment"> 
+<h4>Donors</h4>
+	<table class="ui table segment">
+	  <thead>
+	    <tr>
+	      <th>Name</th>
+	      <th>State</th>
+	      <th>Email</th> 
+	  </thead>
+	  <tbody>
+	  #{list items:users, as:'user'}
+	    <tr>
+	      <td>${user.firstName} ${user.lastName}</td>
+	      <td>${user.state}</td>
+	      <td>${user.email}</td>
+	    </tr>
+	   #{/list}
+	  </tbody>
+	</table>
+</section>
+
+<section class="ui segment"> 
+<h4>Candidates</h4>
+  <table class="ui table segment">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Office</th> 
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+     #{list items:candidates, as:'candidate'}
+        <td>${candidate.firstName} ${candidate.lastName}</td>
+        <td>${candidate.email}</td>
+        <td>${candidate.office}</td>
+    </tr>
+    #{/list}
+    </tbody>
+  </table>
+</section>

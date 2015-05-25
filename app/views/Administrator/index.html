@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Administrator Log in' /}
+
+   <nav class="ui menu">
+    <a class="ui item" href = "/">Home</a>
+    <a class="ui active item" href="/login">Administrator Login</a>
+  </nav>
+
+ <section class="ui segment">
+  <h3>Administrator account login</h3>
+  <h5>Restricted access</h5>
+  <form action="/administrator/authenticate" method="POST">
+    <div class="ui two column grid">
+    <div class="column">
+      <div class="ui fluid form segment">
+        <div class="ui left icon input field">
+          <input placeholder="Administrator email" name="email" type="text">
+          <i class="user icon"></i>
+        </div>
+        <div class="ui left icon input field">
+          <input placeholder="Password" type="password" name="password">
+          <i class="lock icon"></i>
+        </div>
+        <button type="submit" class="ui blue submit button">Login</button>
+      </div>
+    </div>
+    </div>
+  </form>
+</section>

@@ -1,11 +1,11 @@
 #{extends 'main.html' /}
-#{set title:'Signup for Abamo' /}
+#{set title:'Register Candidate' /}
 
-<nav class="ui menu">
-  <a class="ui item" href="/">Home</a>
-  <a class="ui item" href="/signup">Sign Up</a>
-  <a class="ui item" href="/login">Log In</a>
-</nav>
+   <nav class="ui menu">
+    <a class="ui item" href="/administrator/report">Administrator Home</a>
+    <a class="ui active item" href="/login">Register Candidate</a>
+    <a class="ui item" href="/administrator/logout">Administrator Logout</a>
+  </nav>
 
 <section class="ui segment">
   <form action="/candidate/register" method="POST">

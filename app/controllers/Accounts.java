@@ -17,14 +17,26 @@ public class Accounts extends Controller
   }
 
   public static void register(User user)
-  //public static void register(User user, String candidateEmail)
   {
-/*    Candidate candidate = Candidate.findByEmail(candidateEmail);
-    user.addCandidate(candidate);*/
-    user.save();
-    login();
+    if (!isRegistered(user))
+    {
+      user.save();
+      login();      
+    }
+    renderText("You have already registered.\nPlease press back button and navigate to the log in page." );
   }
 
+  private static boolean isRegistered(User currUser)
+  {
+    List<User> users = User.findAll();
+    for (User user : users)
+    {
+      if (user.email.equalsIgnoreCase(currUser.email))
+        return true;
+    }
+    return false;
+  }
+  
   public static void login()
   {
     render();

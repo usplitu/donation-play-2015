@@ -28,9 +28,19 @@ POST  /editprofile/edit				      EditProfile.edit
 
 # Candidate
 GET  /candidate                     CandidateController.index
+GET  /candidate/register            CandidateController.index
 POST /candidate/register            CandidateController.register  
+
+# Administrator                     
+GET  /administrator                Administrator.index
+GET  /administrator/report         Administrator.report
+POST /administrator/login          Administrator.authenticate
+GET  /administrator/logout         Administrator.logout
+
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
+
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

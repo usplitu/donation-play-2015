@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import play.db.jpa.Model;
 
@@ -17,6 +18,9 @@ public class Candidate extends Model
   
   @ManyToMany(mappedBy="candidates")
   public List<User> users;
+  
+  @ManyToOne
+  public Admin administrator;
   
   public static Candidate findByEmail(String email)
   {
