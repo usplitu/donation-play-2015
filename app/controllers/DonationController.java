@@ -33,7 +33,7 @@ public class DonationController extends Controller
           currentCandidate = candidate.firstName + " " + candidate.lastName;
           donationprogress = CandidateController.percentDonationTargetReached(candidate);
         }
-        render(user, donationprogress, candidates, currentCandidate);
+        render(user, donationprogress, candidates, currentCandidate, user.latitude, user.longitude);
       }
     }
 

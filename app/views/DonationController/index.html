@@ -105,7 +105,14 @@
       <div class="label">${donationprogress}% target achieved to date for candidate ${currentCandidate}</div>
     </div>
   </div>
-</section>             
+</section> 
+
+  <div style="visibility: hidden">
+  <input type="text"  id="latitude" name="latcenter" value="${user.latitude}">
+  <input type="text"  id="longitude" name="lngcenter" value="${user.longitude}">
+</div>
+
+            
 <script src="@{'/public/javascripts/donate.js'}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script src="@{'/public/javascripts/map.js'}"}"></script>

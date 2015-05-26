@@ -29,7 +29,8 @@ import play.db.jpa.Model;
     public String  zipcode   ; 
     public String  email     ;
     public String  password  ;
-    
+    public String  latitude  ; 
+    public String  longitude ;
     
     @OneToMany(mappedBy="from")
     public List<Donation> donations;

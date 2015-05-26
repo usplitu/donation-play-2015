@@ -39,6 +39,8 @@ public class EditProfile extends Controller
 		to.city       = from.city      ;
 		to.state      = from.state     ;
 		to.zipcode    = from.zipcode   ;	
+		to.latitude   = from.latitude  ;
+		to.longitude  = from.longitude ;
 	}
 
 }

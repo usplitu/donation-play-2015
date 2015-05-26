@@ -53,6 +53,25 @@
 	      <input value=${user.zipcode} name="user.zipcode" type="text">
 	    </div>
 	  </div> 
+	  
+    <div class="two fields">        
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui label">
+            Latitude
+          </div>
+          <input value=${user.latitude} type="text" name="user.latitude">
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui labeled input">
+          <div class="ui label">
+            Longitude
+          </div>
+          <input value=${user.longitude} type="text" name="user.longitude">
+        </div>
+      </div>                
+    </div>	  
 	   
     <button type="submit" class="ui blue submit button">Submit</button>  
     <input type="button" class="ui blue submit button" value="Cancel" onClick="history.go(-1);return true;"></input>

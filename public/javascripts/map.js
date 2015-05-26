@@ -1,11 +1,13 @@
 function initialize() {
     var map;
     var marker;
-    var latlng = new google.maps.LatLng(53.347298, -6.268344);
+    var userlat = $("#latitude").val();
+    var userlon = $("#longitude").val();
+    var latlng = new google.maps.LatLng(userlat, userlon);
 
     var mapOptions = {
         zoom : 8,
-        center : new google.maps.LatLng(53.347298,-6.268344),
+        center : new google.maps.LatLng(userlat, userlon),
         mapTypeId : google.maps.MapTypeId.ROADMAP
     };
     var mapDiv = document.getElementById('map_canvas');

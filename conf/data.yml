@@ -45,6 +45,8 @@ User(homer):
     email: homer@simpson.com
     password: secret
     donations: [donation04, donation05, donation06]
+    latitude: "44.008620"
+    longitude: "-123.074341"
 
 User(lisa):
     usaCitizen: true
@@ -52,13 +54,15 @@ User(lisa):
     lastName: Simpson
     age:      10
     address1: Simpsonville
-    address2: "742 Evergreen Terrace"
-    city: Springfield
-    state: Idaho
+    address2: "73 Darkglade Av."
+    city: Boston
+    state: Mass
     zipcode: 80085
     email: lisa@simpson.com
     password: secret
     donations: [donation01, donation02, donation03]
+    latitude: "42.360082"
+    longitude: "-71.058880"
 
 Donation(donation01):
     received: 1000
