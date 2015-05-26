@@ -1,0 +1,84 @@
+#{extends 'main.html' /} #{set title:'Donation Request' /}
+  <nav class="ui menu">
+    <a class="ui active item" href="/donation">Make Donation</a>
+    <a class="ui item" href="/donation/report">Report</a>
+    <a class="ui item" href="/editprofile">Edit Profile</a> <!-- Story 3 -->    
+    <a class="ui item" href="/logout">Log Out</a>
+  </nav>
+
+<section class="ui segment">
+  <h3>Welcome ${user.firstName}</h3>
+  <h4>Please give generously</h4>
+  
+	<div class="ui grid">
+	    <div class="six wide column">
+				<form class="ui form" action="/donation/donate" method="POST">
+					<table class="ui table">
+					  <thead>
+					    <tr>
+					      <th>Make a donation</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>
+					      Dropdown select candidate
+					      
+					      </td>					
+					    </tr>
+					    <tr>
+					      <td>
+					      Amount
+					      </td>
+					
+					    </tr>
+					    <tr>
+					      <td>
+					      Radio buttons
+					      </td>					
+					    </tr>
+              <tr>
+                <td>
+                Donate button
+                </td>         
+              </tr>
+					  </tbody>
+					</table>
+				</form>
+
+    </div>
+    <!-- Google map -->
+    <div class="ten wide column">
+      <table class="ui table">
+        <thead>
+          <tr>
+            <th>Map</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+            Dropdown select candidate            
+            </td>         
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+  <!-- Donation progress  -->
+  <div class="ui segment">   
+    <div class="ui indicating progress" id="progress">
+      <div class="bar">
+        <div class="progress"></div>
+      </div>
+      <div class="label">${donationprogress}% target achieved to date for candidate ${currentCandidate}</div>
+    </div>
+  </div>
+</section>             
+<script src="@{'/public/javascripts/donate.js'}"></script>
+<script>
+  $('#progress').progress('increment', '${donationprogress}'); 
+</script>
+
+<!-- http://semantic-ui.com/modules/progress.html -->
