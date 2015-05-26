@@ -14,6 +14,7 @@ Candidate(abamo):
     email: able@whitehouse.com
     office: vicepresident
     donations: [donation01, donation02, donation05]
+    donationTarget: 10000 
 
 Candidate(hilton):
     firstName: Celery
@@ -21,6 +22,7 @@ Candidate(hilton):
     email: celery@whitehouse.com
     office: president
     donations: [donation04]
+    donationTarget: 10000
 
 Candidate(gumble):
     firstName: Barney
@@ -28,7 +30,8 @@ Candidate(gumble):
     email: gumble@whitehouse.com
     office: president
     donations: [donation03, donation06]
-
+    donationTarget: 5000
+    
 User(homer):
     usaCitizen: true
     firstName: Homer
@@ -41,7 +44,6 @@ User(homer):
     zipcode: 80085
     email: homer@simpson.com
     password: secret
-    candidates: [hilton, abamo, gumble]
     donations: [donation04, donation05, donation06]
 
 User(lisa):
@@ -56,7 +58,6 @@ User(lisa):
     zipcode: 80085
     email: lisa@simpson.com
     password: secret
-    candidates: [abamo, gumble]
     donations: [donation01, donation02, donation03]
 
 Donation(donation01):

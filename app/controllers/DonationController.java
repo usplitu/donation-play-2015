@@ -1,16 +1,12 @@
 package controllers;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 import models.Candidate;
 import models.Donation;
 import models.User;
 import play.Logger;
 import play.mvc.Controller;
-//import utils.DonationDateComparator;
+
 
 public class DonationController extends Controller 
 {
@@ -25,19 +21,17 @@ public class DonationController extends Controller
       }
       else
       {
-        String prog = getPercentTargetAchieved();
-        String donationprogress = prog;// + "%";//a trailing % required to render in view progress bar
-
         Logger.info("Donation ctrler : user is " + user.email);
-        Logger.info("Donation ctrler : percent target achieved " + donationprogress);
-       
+        
         List<Candidate> candidates = Candidate.findAll();
         String currentCandidateEmail = session.get("currentCandidate");
         Candidate candidate = Candidate.findByEmail(currentCandidateEmail);
         String currentCandidate = "";
+        String donationprogress = "0";
         if (candidate != null)
         {
           currentCandidate = candidate.firstName + " " + candidate.lastName;
+          donationprogress = CandidateController.percentDonationTargetReached(candidate);
         }
         render(user, donationprogress, candidates, currentCandidate);
       }
@@ -49,13 +43,15 @@ public class DonationController extends Controller
      * 
      * @param amountDonated
      * @param methodDonated
+     * @param candidateEmail
      */
     public static void donate(long amountDonated, String methodDonated, String candidateEmail) 
     {
-        session.put("currentCandidate", candidateEmail);
-        Logger.info("amount donated " + amountDonated + " " + "method donated "
-                + methodDonated);
+
+        Logger.info("amount donated " + amountDonated + " " + "method donated " + methodDonated);
         Logger.info("candidateEmail " + candidateEmail);
+        
+        session.put("currentCandidate", candidateEmail);
         User user = Accounts.getCurrentUser();
         if (user == null) 
         {
@@ -65,56 +61,15 @@ public class DonationController extends Controller
         else 
         {
             Candidate candidate = Candidate.findByEmail(candidateEmail);
-            addDonation(user, amountDonated, methodDonated, candidate);
-            user.addCandidate(candidate);
+            Donation donation = new Donation(user, amountDonated, methodDonated, candidate);
+            donation.save();
+ 
+            candidate.addDonation(donation);
+            candidate.save();
+            user.addDonation(donation);
             user.save();
         }
         index();
     }
 
-    /**
-     * @param user
-     * @param amountDonated
-     */
-    private static void addDonation(User user, long amountDonated,String methodDonated, Candidate candidate) 
-    {
-        Donation bal = new Donation(user, amountDonated, methodDonated, candidate);
-        bal.save();
-    }
-    
-    /*
-     * Hard codes an arbitrary donation target amount
-     * @return the target donation amount
-     */
-  private static long getDonationTarget() 
-  {
-    // TODO Input this value thro' html template admin controlled
-    return 20000;
-  }
-
-   /**
-   * Calculate the percentage of target achieved for current candidate
-   * @return the percentage of donation target achieved
-   */
-  public static String getPercentTargetAchieved() 
-  {
-    long total = 0;
-    List<Donation> donations = Donation.findAll();
-    String candidateEmail = session.get("currentCandidate");
-    Logger.info("getPercentTarget: candidateEmail is " + candidateEmail);
-    for (Donation donation : donations) 
-    {
-      Logger.info("getPercentTargetAchieved " + donation.candidate.email);
-      
-      if (donation.candidate.email.equalsIgnoreCase(candidateEmail))
-      {
-        total += donation.received;
-      }
-    }
-    long target = getDonationTarget();
-    long percentachieved = (total * 100 / target);
-    String progress = String.valueOf(percentachieved);
-    Logger.info("Percent of target achieved " + progress + " percent achieved = " + percentachieved);
-    return progress;
-  }
 }

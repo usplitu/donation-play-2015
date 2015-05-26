@@ -3,8 +3,8 @@ package controllers;
 import java.util.List;
 
 import models.Candidate;
+import models.Donation;
 import models.Office;
-import models.User;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -13,16 +13,14 @@ public class CandidateController extends Controller
   public static void index()
   {
     List<Office> offices = Office.findAll();
-    //logoffices(offices);
     render(offices);
   }
   
-//  private static void logoffices(List<Office> offices)
-//  {
-//    for (Office office : offices)
-//      Logger.info("Registered office: " + office.title + " " + office.description);
-//  }
-  
+  /**
+   * Register an office to a candidate
+   * @param candidate
+   * @param officeTitle The office's title field
+   */
   public static void register(Candidate candidate, String officeTitle)
   {
     Office office = getOffice(officeTitle);
@@ -40,6 +38,11 @@ public class CandidateController extends Controller
     renderText("Candidate already registered");
   }
   
+  /**
+   * Given the title of the office, return the Office object
+   * @param title Office title
+   * @return Reference to Object instance containing field 'title'
+   */
   private static Office getOffice(String title)
   {
     List<Office> offices = Office.findAll();
@@ -53,15 +56,41 @@ public class CandidateController extends Controller
     }
     return null;
   }
-  private static boolean isRegistered(Candidate currCandidate)
+  /**
+   * Checks if proposed candidate already registered
+   * @param proposedCandidate The candidate being propsed for registration
+   * @return True if the candidate is already registered, else false.
+   */
+  private static boolean isRegistered(Candidate proposedCandidate)
   {
     List<Candidate> candidates = Candidate.findAll();
     for (Candidate candidate : candidates)
     {
-      if (candidate.email.equalsIgnoreCase(currCandidate.email))
+      if (candidate.email.equalsIgnoreCase(proposedCandidate.email))
         return true;
     }
     return false;
+  }
+  
+  /**
+   * Calculates the percentage of the target donations achieved by particular candidate
+   * If excess 100% achieved 100% returned
+   * 
+   * @param candidate The candidate for whom percentage target achieved being calculated
+   * @return The percentage of target achieved as a string
+   */
+  public static String percentDonationTargetReached(Candidate candidate)
+  {
+    long sumDonations = 0;
+    List<Donation> donations = candidate.donations;
+    for (Donation donation : donations)
+    {
+      sumDonations += donation.received;
+    }
+    long percentTarget = (sumDonations*100)/candidate.donationTarget;
+    Logger.info("percentTarget " + percentTarget);
+    percentTarget = percentTarget > 100 ? 100 : percentTarget;
+    return String.valueOf(percentTarget);
   }
 
 }

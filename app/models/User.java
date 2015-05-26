@@ -21,19 +21,15 @@ import play.db.jpa.Model;
     public boolean usaCitizen;
     public String  firstName ;
     public String  lastName  ;
-    public String  age       ; // Story 1
-    public String  address1  ; // Story 5
+    public String  age       ; 
+    public String  address1  ; 
     public String  address2  ;
     public String  city      ;
-    public String  state     ; // Story 1
-    public String  zipcode   ; // Story 5
+    public String  state     ; 
+    public String  zipcode   ; 
     public String  email     ;
     public String  password  ;
     
-/*    @ManyToOne
-    public Candidate  candidate ;*/
-    @ManyToMany
-    public List<Candidate> candidates;
     
     @OneToMany(mappedBy="from")
     public List<Donation> donations;
@@ -48,9 +44,9 @@ import play.db.jpa.Model;
         return this.password.equals(password);
     }
     
-    public void addCandidate(Candidate candidate)
+    public void addDonation(Donation donation)
     {
-      //this.candidate = candidate;
-      candidates.add(candidate);
+      this.donations.add(donation);
     }
+
   }
