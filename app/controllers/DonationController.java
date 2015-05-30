@@ -35,7 +35,10 @@ public class DonationController extends Controller
           currentCandidate = candidate.firstName + " " + candidate.lastName;
           donationprogress = CandidateController.percentDonationTargetReached(candidate);
         }
-        render(user, donationprogress, candidates, currentCandidate, user.latitude, user.longitude);
+        
+        Geolocation geolocation = user.geolocation;
+        
+        render(user, donationprogress, candidates, currentCandidate, geolocation.latitude, geolocation.longitude);
       }
     }
 
@@ -76,7 +79,10 @@ public class DonationController extends Controller
     
     public static void listGeolocations()
     {
-      renderJSON(Geolocation.findAll());
+      List<Geolocation> geo = Geolocation.findAll();
+      for (Geolocation g : geo)
+        Logger.info("Geolocations " + g.latitude + ", " + g.longitude);    
+      renderJSON(geo);
     }
 
 }

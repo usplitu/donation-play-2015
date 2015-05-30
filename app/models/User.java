@@ -3,8 +3,8 @@
   import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import play.db.jpa.Model;
 
@@ -29,8 +29,9 @@ import play.db.jpa.Model;
     public String  zipcode   ; 
     public String  email     ;
     public String  password  ;
-    public String  latitude  ; 
-    public String  longitude ;
+    
+    @OneToOne//(mappedBy="user")
+    public Geolocation geolocation;
     
     @OneToMany(mappedBy="from")
     public List<Donation> donations;
@@ -48,6 +49,11 @@ import play.db.jpa.Model;
     public void addDonation(Donation donation)
     {
       this.donations.add(donation);
+    }
+    
+    public void addGeolocation(Geolocation geolocation)
+    {
+      this.geolocation = geolocation;
     }
 
   }

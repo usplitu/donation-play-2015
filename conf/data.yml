@@ -31,7 +31,19 @@ Candidate(gumble):
     office: president
     donations: [donation03, donation06]
     donationTarget: 5000
-    
+
+Geolocation(geoHomer):
+    latitude: "44.008620"
+    longitude: "-123.074341"
+
+Geolocation(geoLisa):
+    latitude: "42.360082"
+    longitude: "-71.058880"
+
+Geolocation(geoMaggie):
+    latitude: "31.360082"
+    longitude: "-91.058880"
+
 User(homer):
     usaCitizen: true
     firstName: Homer
@@ -45,8 +57,8 @@ User(homer):
     email: homer@simpson.com
     password: secret
     donations: [donation04, donation05, donation06]
-    latitude: "43.914873"
-    longitude: "7.506486"
+    geolocation: geoHomer
+
 
 User(lisa):
     usaCitizen: true
@@ -61,8 +73,23 @@ User(lisa):
     email: lisa@simpson.com
     password: secret
     donations: [donation01, donation02, donation03]
-    latitude: "42.360082"
-    longitude: "-71.058880"
+    geolocation: geoLisa
+
+
+User(maggie):
+    usaCitizen: true
+    firstName: Maggie
+    lastName: Simpson
+    age:      50
+    address1: Simpsonville
+    address2: "73 Darkglade Av."
+    city: Boston
+    state: Mass
+    zipcode: 80085
+    email: maggie@simpson.com
+    password: secret
+    donations: [donation07]
+    geolocation: geoMaggie
 
 Donation(donation01):
     received: 1000
@@ -106,11 +133,9 @@ Donation(donation06):
     from: homer
     candidate: gumble
 
-Geolocation(geoHomer):
-    latitude: "44.008620"
-    longitude: "-123.074341"
-
-Geolocation(geoLisa):
-    latitude: "42.360082"
-    longitude: "-71.058880"
-
+Donation(donation07):
+    received: 1000
+    methodDonated: direct
+    dateDonated: "2015-05-23 16:53:08.543"
+    from: maggie
+    candidate: gumble

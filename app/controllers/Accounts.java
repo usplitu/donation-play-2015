@@ -21,8 +21,12 @@ public class Accounts extends Controller
   {
     if (!isRegistered(user))
     {
+      //geolocation.addUser(user);
       geolocation.save();
+      
+      user.addGeolocation(geolocation);
       user.save();
+      
       login();      
     }
     renderText("You have already registered.\nPlease press back button and navigate to the log in page." );

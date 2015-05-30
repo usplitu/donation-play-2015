@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 import play.db.jpa.Model;
 
@@ -12,4 +13,13 @@ public class Geolocation extends Model
   // public String latlng;
   public String latitude;
   public String longitude;
+  
+//  @OneToOne(mappedBy="geolocation")
+//  public User user;
+
+  
+//  public void addUser(User user)
+//  {
+//    this.user = user;
+//  }
 }
