@@ -22,7 +22,6 @@ POST   /donation/filterCandidates   Report.filterCandidates
 POST   /donation/filterDonors       Report.filterDonors
 POST   /donation/filterStates       Report.filterStates
 
-# Story 3
 # Edit Profile page
 GET   /editprofile				          EditProfile.index					
 POST  /editprofile/edit				      EditProfile.edit
@@ -41,6 +40,9 @@ GET  /administrator/logout         Administrator.logout
 # Office
 GET /office                        OfficeController.index
 POST /office/create                OfficeController.register
+
+# Geolocations
+GET /geolocations/json             DonationController.listGeolocations
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -45,8 +45,8 @@ User(homer):
     email: homer@simpson.com
     password: secret
     donations: [donation04, donation05, donation06]
-    latitude: "44.008620"
-    longitude: "-123.074341"
+    latitude: "43.914873"
+    longitude: "7.506486"
 
 User(lisa):
     usaCitizen: true
@@ -105,3 +105,12 @@ Donation(donation06):
     dateDonated: "2015-05-23 16:53:08.543"
     from: homer
     candidate: gumble
+
+Geolocation(geoHomer):
+    latitude: "44.008620"
+    longitude: "-123.074341"
+
+Geolocation(geoLisa):
+    latitude: "42.360082"
+    longitude: "-71.058880"
+

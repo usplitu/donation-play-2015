@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Candidate;
+import models.Geolocation;
 import models.User;
 import play.Logger;
 import play.mvc.Controller;
@@ -16,10 +17,11 @@ public class Accounts extends Controller
     render(candidates);
   }
 
-  public static void register(User user)
+  public static void register(User user, Geolocation geolocation)
   {
     if (!isRegistered(user))
     {
+      geolocation.save();
       user.save();
       login();      
     }

@@ -1,8 +1,10 @@
 package controllers;
 
 import java.util.List;
+
 import models.Candidate;
 import models.Donation;
+import models.Geolocation;
 import models.User;
 import play.Logger;
 import play.mvc.Controller;
@@ -70,6 +72,11 @@ public class DonationController extends Controller
             user.save();
         }
         index();
+    }
+    
+    public static void listGeolocations()
+    {
+      renderJSON(Geolocation.findAll());
     }
 
 }
