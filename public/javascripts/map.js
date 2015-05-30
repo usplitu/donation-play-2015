@@ -6,7 +6,7 @@ $(document).ready(function ()
 	function initialize() {
 		// create basic map without markers
 		map();
-		// pull markers and render on map
+		// get marker locations and render on map
 	    retrieveMarkerLocations();
 	}
 
@@ -20,23 +20,26 @@ $(document).ready(function ()
 	    $(function() {
 	        $.get("geolocations/json", function(data) {
 	        }).done(function(data) {
+		           $.each(data, function(index, geoObj) 
+				   {
+				         console.log(geoObj[0] + " " + geoObj[1] + " " + geoObj[2]);
+				   });
 	        	callback(data);
 	        });
 	    });
    }
 	    
     /**
-     * we've got the marker location from data in ajax cll
-     * we now put into an array
-     * the format is 'xx.xxxx, yy.yyyyy' -> (lat, lng)
-     * then invoke 'fitBounds' to render the markers and centre map
+     * we've got the marker location from data in ajax call
+     * we now put data into an array
+     * the format is 'firstName, xx.xxxx, yy.yyyyy' -> (firstName, lat, lng)
+     * then invoke 'fitBounds' to render the markers, centre map and create infoWindow to display firstName
      */
 	function callback(data)
 	{
 		latlngStr = [];
 		$.each(data, function(index, geoObj) 
 		{
-			console.log(geoObj.latitude + " " + geoObj.longitude);
             latlngStr.push(geoObj);
         });
         fitBounds(latlngStr);
@@ -56,16 +59,17 @@ $(document).ready(function ()
     /**
      * A helper function to convert the latlng string to individual numbers
      * and thence to a LatLng object which is returned
+     * @param str str is list of strings : username, lat, lon    
+     * str[0] is user (donor) firstName                
+     * str[1] is latitude                              
+     * str[2] is longitude                             
+     * 
      */
 	function getLatLng(str)
-	{
-		//      To split "xxx.xxx, yyy.yy" -> "lat, lon"
-		//		var s = str.latlng.split(",");
-		//		var lat = Number(s[0]); 
-		//		var lon = Number(s[1]);
-		// str object with latitude and longitude fields
-		var lat = Number(str.latitude);
-		var lon = Number(str.longitude);
+	{	
+	
+		var lat = Number(str[1]);
+		var lon = Number(str[2]);
 		return new google.maps.LatLng(lat, lon);
 	}
 	 
@@ -76,13 +80,22 @@ $(document).ready(function ()
 	function fitBounds(latlngStr)
 	{
 		var bounds = new google.maps.LatLngBounds();
-
-	    for (i = 0; i < latlngStr.length; i++) {
+	    var infowindow = new google.maps.InfoWindow();
+	    
+	    for (i = 0; i < latlngStr.length; i++) 
+	    {
 	        marker = new google.maps.Marker({
 	            position: getLatLng(latlngStr[i]),
 	            map: map
 	        });
-
+            /*respond to click on marker by displaying user (donor) name */
+	        google.maps.event.addListener(marker, 'click', (function (marker, i) {
+	            return function () {
+	            	infowindow.setContent(latlngStr[i][0]);
+	                infowindow.open(map, marker);
+	            }
+	        })(marker, i));
+	        
 	        bounds.extend(marker.position);
 	    }
 

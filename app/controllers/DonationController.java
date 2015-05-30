@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Candidate;
@@ -80,9 +81,18 @@ public class DonationController extends Controller
     public static void listGeolocations()
     {
       List<Geolocation> geo = Geolocation.findAll();
+      List<ArrayList<String>> jsonArray = new ArrayList<ArrayList<String>>();
       for (Geolocation g : geo)
-        Logger.info("Geolocations " + g.latitude + ", " + g.longitude);    
-      renderJSON(geo);
+      {
+        Logger.info("Geolocations " + g.latitude + ", " + g.longitude);   
+        ArrayList<String> s = new ArrayList<String>();
+        s.add(g.user.firstName);
+        s.add(g.latitude);
+        s.add(g.longitude);
+        jsonArray.add(s);
+      }
+      //renderJSON(geo);
+      renderJSON(jsonArray);
     }
 
 }

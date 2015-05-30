@@ -14,12 +14,12 @@ public class Geolocation extends Model
   public String latitude;
   public String longitude;
   
-//  @OneToOne(mappedBy="geolocation")
-//  public User user;
+  @OneToOne(mappedBy="geolocation")
+  public User user;
 
   
-//  public void addUser(User user)
-//  {
-//    this.user = user;
-//  }
+  public void addUser(User user)
+  {
+    this.user = user;
+  }
 }
