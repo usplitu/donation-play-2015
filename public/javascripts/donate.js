@@ -2,6 +2,18 @@ $('.ui.dropdown')
   .dropdown()
 ;
 
+//$('.ui.dropdown').dropdown({
+// onChange: submit
+//});
+//$('.dropdown')
+//  .dropdown({
+//    action: function(text, value) {
+//      var t = text;
+//      var v = value;
+//    }
+//  });
+//;
+
 $('.ui.form')
 .form({
 	
@@ -21,3 +33,17 @@ $('.ui.form')
       }]
   }
 });
+
+//function submit() {
+//    new Request.HTML({
+//        url: '/echo/html/',
+//        data: {
+//            html: newOptions,
+//            delay: 1
+//        },
+//        method: 'post',
+//        onSuccess: function(response) {            
+//            $('.ui.dropdown select').html(newOptions);
+//        }
+//    }).send();
+//}
