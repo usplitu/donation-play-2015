@@ -75,7 +75,7 @@ public class DonationController extends Controller
             user.addDonation(donation);
             user.save();
         }
-        index();
+        //index();
     }
     
     public static void listGeolocations()

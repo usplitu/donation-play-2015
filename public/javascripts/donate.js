@@ -31,9 +31,36 @@ $('.ui.form')
         type: 'empty',
         prompt: 'Please select an amount to donate'
       }]
-  }
+  },
+ 
 });
 
+//function submitForm()
+//{
+//	alert("in submit");
+//}
+
+$('.ui.blue.submit.button').on('click', function() {
+	  submitForm();
+	  return false; //doesn't prevent auto refresh...damn
+	});
+
+	function submitForm() {
+	  var formData = $('.ui.form.segment input').serialize(); 
+	  $.ajax({
+	    type: 'POST',
+	    url: '/donation/donate',
+	    data: formData,
+		success: function(response) {            
+			alert("success");
+		}
+	  });
+	}
+//$.('#donationform')
+//{
+//	alert("in submit");
+//	//$.post("/donation/donate");
+//}
 //function submit() {
 //    new Request.HTML({
 //        url: '/echo/html/',
@@ -47,3 +74,4 @@ $('.ui.form')
 //        }
 //    }).send();
 //}
+
