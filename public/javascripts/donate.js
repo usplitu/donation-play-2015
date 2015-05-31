@@ -31,19 +31,19 @@ $('.ui.form')
         type: 'empty',
         prompt: 'Please select an amount to donate'
       }]
-  },
- 
+  }
+},
+
+{
+//	inline : true,
+//	on     : 'blur',
+	onSuccess : function(){
+	    console.log('on success');
+	    submitForm();
+	    return false;
+	} 
 });
 
-//function submitForm()
-//{
-//	alert("in submit");
-//}
-
-//$('.ui.blue.submit.button').on('click', function() {
-//	  submitForm();
-//	  return false; //doesn't prevent auto refresh...damn
-//	});
 
 	function submitForm() {
 	  var formData = $('.ui.form.segment input').serialize(); 
@@ -57,22 +57,4 @@ $('.ui.form')
 		}
 	  });
 	}
-//$.('#donationform')
-//{
-//	alert("in submit");
-//	//$.post("/donation/donate");
-//}
-//function submit() {
-//    new Request.HTML({
-//        url: '/echo/html/',
-//        data: {
-//            html: newOptions,
-//            delay: 1
-//        },
-//        method: 'post',
-//        onSuccess: function(response) {            
-//            $('.ui.dropdown select').html(newOptions);
-//        }
-//    }).send();
-//}
 

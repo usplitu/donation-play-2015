@@ -17,6 +17,7 @@ import play.mvc.Controller;
 public class DonationController extends Controller 
 {
 
+    // TODO : requires refactoring as part of ajax impl
     public static void index()
     {
       User user = Accounts.getCurrentUser();
@@ -78,6 +79,7 @@ public class DonationController extends Controller
             user.addDonation(donation);
             user.save();
             
+            // TODO remove or modify this test code: consider returning progress %
             JSONObject obj = new JSONObject();
             obj.put("email", "homer@simpson.com");
             Logger.info("In Controller method Geojson.refreshTest: attempting to render json " + obj);  
@@ -87,6 +89,10 @@ public class DonationController extends Controller
         //index();
     }
     
+    /**
+     * TODO User JSONObject as in method donate
+     * renders all Geolocations as a json array
+     */
     public static void listGeolocations()
     {
       List<Geolocation> geo = Geolocation.findAll();

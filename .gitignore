@@ -3,6 +3,7 @@
 
 # except for .gitignore
 !.gitignore
+!lib/json-simple-1.1.jar
 
 # Ignore Play! working directory #
 war
