@@ -40,10 +40,10 @@ $('.ui.form')
 //	alert("in submit");
 //}
 
-$('.ui.blue.submit.button').on('click', function() {
-	  submitForm();
-	  return false; //doesn't prevent auto refresh...damn
-	});
+//$('.ui.blue.submit.button').on('click', function() {
+//	  submitForm();
+//	  return false; //doesn't prevent auto refresh...damn
+//	});
 
 	function submitForm() {
 	  var formData = $('.ui.form.segment input').serialize(); 
@@ -52,7 +52,8 @@ $('.ui.blue.submit.button').on('click', function() {
 	    url: '/donation/donate',
 	    data: formData,
 		success: function(response) {            
-			alert("success");
+			//alert("success");
+			console.log("make donation page submitForm response: " + response);
 		}
 	  });
 	}

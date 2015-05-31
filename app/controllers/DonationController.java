@@ -7,6 +7,9 @@ import models.Candidate;
 import models.Donation;
 import models.Geolocation;
 import models.User;
+
+import org.json.simple.JSONObject;
+
 import play.Logger;
 import play.mvc.Controller;
 
@@ -74,6 +77,12 @@ public class DonationController extends Controller
             candidate.save();
             user.addDonation(donation);
             user.save();
+            
+            JSONObject obj = new JSONObject();
+            obj.put("email", "homer@simpson.com");
+            Logger.info("In Controller method Geojson.refreshTest: attempting to render json " + obj);  
+            renderJSON(obj);
+            
         }
         //index();
     }
