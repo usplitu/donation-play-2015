@@ -52,8 +52,11 @@ $('.ui.form')
 	    url: '/donation/donate',
 	    data: formData,
 		success: function(response) {            
-			//alert("success");
-			console.log("make donation page submitForm response: " + response);
+			console.log("make donation page submitForm response: " + response.progress);
+			$('.ui.indicating.progress').progress({
+				  percent: response.progress
+				});
+			$('#progresslabel').text(response.progress + " % of target achieved to date for candidate")
 		}
 	  });
 	}

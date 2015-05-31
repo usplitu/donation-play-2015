@@ -38,7 +38,8 @@ public class DonationController extends Controller
         if (candidate != null)
         {
           currentCandidate = candidate.firstName + " " + candidate.lastName;
-          donationprogress = CandidateController.percentDonationTargetReached(candidate);
+          //donationprogress = CandidateController.percentDonationTargetReached(candidate);
+          donationprogress = getProgress();
         }
         
         Geolocation geolocation = user.geolocation;
@@ -47,6 +48,20 @@ public class DonationController extends Controller
       }
     }
 
+    private static String getProgress()
+    {
+      //List<Candidate> candidates = Candidate.findAll();
+      String currentCandidateEmail = session.get("currentCandidate");
+      Candidate candidate = Candidate.findByEmail(currentCandidateEmail);
+      //String currentCandidate = "";
+      String donationprogress = "0";
+      if (candidate != null)
+      {
+        //currentCandidate = candidate.firstName + " " + candidate.lastName;
+        donationprogress = CandidateController.percentDonationTargetReached(candidate);
+      }
+      return donationprogress;
+    }
     /**
      * Log and save to database amount donated and method of donation, eg.
      * paypal, direct payment
@@ -81,8 +96,8 @@ public class DonationController extends Controller
             
             // TODO remove or modify this test code: consider returning progress %
             JSONObject obj = new JSONObject();
-            obj.put("email", "homer@simpson.com");
-            Logger.info("In Controller method Geojson.refreshTest: attempting to render json " + obj);  
+            obj.put("progress", getProgress());
+            Logger.info("progress " + getProgress()); //TODO Remove when debug done;  
             renderJSON(obj);
             
         }

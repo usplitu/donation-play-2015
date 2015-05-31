@@ -105,7 +105,7 @@
       <div class="bar">
         <div class="progress"></div>
       </div>
-      <div class="label">${donationprogress}% target achieved to date for candidate ${currentCandidate}</div>
+      <div class="label" id="progresslabel">${donationprogress}% target achieved to date for candidate ${currentCandidate}</div>
     </div>
   </div>
 </section> 
@@ -116,8 +116,8 @@
 
 <script src="@{'/public/javascripts/donate.js'}"></script>
 
-<script>
+<!-- <script>
   $('#progress').progress('increment', '${donationprogress}'); 
-</script>
+</script> -->
  
 <!-- http://semantic-ui.com/modules/progress.html -->
