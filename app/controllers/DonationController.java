@@ -30,34 +30,18 @@ public class DonationController extends Controller
       {
         Logger.info("Donation ctrler : user is " + user.email);
         
-        List<Candidate> candidates = Candidate.findAll();
-        String currentCandidateEmail = session.get("currentCandidate");
-        Candidate candidate = Candidate.findByEmail(currentCandidateEmail);
-        String currentCandidate = "";
-        String donationprogress = "0";
-        if (candidate != null)
-        {
-          currentCandidate = candidate.firstName + " " + candidate.lastName;
-          //donationprogress = CandidateController.percentDonationTargetReached(candidate);
-          donationprogress = getProgress();
-        }
-        
-        Geolocation geolocation = user.geolocation;
-        
-        render(user, donationprogress, candidates, currentCandidate, geolocation.latitude, geolocation.longitude);
+        List<Candidate> candidates = Candidate.findAll();       
+        render(user, candidates);
       }
     }
 
     private static String getProgress()
     {
-      //List<Candidate> candidates = Candidate.findAll();
       String currentCandidateEmail = session.get("currentCandidate");
       Candidate candidate = Candidate.findByEmail(currentCandidateEmail);
-      //String currentCandidate = "";
       String donationprogress = "0";
       if (candidate != null)
       {
-        //currentCandidate = candidate.firstName + " " + candidate.lastName;
         donationprogress = CandidateController.percentDonationTargetReached(candidate);
       }
       return donationprogress;
@@ -94,10 +78,9 @@ public class DonationController extends Controller
             user.addDonation(donation);
             user.save();
             
-            // TODO remove or modify this test code: consider returning progress %
             JSONObject obj = new JSONObject();
             obj.put("progress", getProgress());
-            Logger.info("progress " + getProgress()); //TODO Remove when debug done;  
+            obj.put("candidate", candidate.firstName + " " + candidate.lastName);
             renderJSON(obj);
             
         }
@@ -105,7 +88,6 @@ public class DonationController extends Controller
     }
     
     /**
-     * TODO User JSONObject as in method donate
      * renders all Geolocations as a json array
      */
     public static void listGeolocations()
@@ -121,8 +103,7 @@ public class DonationController extends Controller
         s.add(g.longitude);
         jsonArray.add(s);
       }
-      //renderJSON(geo);
       renderJSON(jsonArray);
     }
-
+    
 }

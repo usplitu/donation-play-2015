@@ -1,18 +1,4 @@
-$('.ui.dropdown')
-  .dropdown()
-;
-
-//$('.ui.dropdown').dropdown({
-// onChange: submit
-//});
-//$('.dropdown')
-//  .dropdown({
-//    action: function(text, value) {
-//      var t = text;
-//      var v = value;
-//    }
-//  });
-//;
+$('.ui.dropdown').dropdown();
 
 $('.ui.form')
 .form({
@@ -35,12 +21,11 @@ $('.ui.form')
 },
 
 {
-//	inline : true,
-//	on     : 'blur',
-	onSuccess : function(){
+	onSuccess : function() {
+		inline: true,
 	    console.log('on success');
 	    submitForm();
-	    return false;
+	    return false; // dropdown remains open following press donate button. progress bar fails on return true. why?
 	} 
 });
 
@@ -56,7 +41,7 @@ $('.ui.form')
 			$('.ui.indicating.progress').progress({
 				  percent: response.progress
 				});
-			$('#progresslabel').text(response.progress + " % of target achieved to date for candidate")
+			$('#progresslabel').text(response.progress + " % of target achieved to date for candidate " + response.candidate);
 		}
 	  });
 	}

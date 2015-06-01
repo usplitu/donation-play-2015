@@ -13,6 +13,11 @@ $(document).ready(function ()
 	/**
 	 * Use ajax call to get markers
 	 * pass returned array marker locations to callback method
+	 * Here is the format in which marker data stored
+	 * geoObj[0] is user (donor) firstName.             
+     * geoObj[1] is latitude                              
+     * geoObj[2] is longitude  
+     * We use geoObj[0] in the infoWindow. Click on marker reveals the name of donor (user)
 	 */
 	function retrieveMarkerLocations()
 	{
@@ -58,12 +63,14 @@ $(document).ready(function ()
 	
     /**
      * A helper function to convert the latlng string to individual numbers
-     * and thence to a LatLng object which is returned
+     * and thence to a google.maps.LatLng object
      * @param str str is list of strings : username, lat, lon    
      * str[0] is user (donor) firstName                
      * str[1] is latitude                              
      * str[2] is longitude                             
      * 
+     * @param The object 'str' holding an individual marker data set
+     * @return A google.maps.LatLng object containing the marker coordinates.
      */
 	function getLatLng(str)
 	{	
