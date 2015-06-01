@@ -13,11 +13,15 @@ import org.json.simple.JSONObject;
 import play.Logger;
 import play.mvc.Controller;
 
-
+/**
+ * this class refactored for ajax call from make donate page
+ * @author john
+ * @version 2015-06-01 (yyyy-mm-dd)
+ *
+ */
 public class DonationController extends Controller 
 {
 
-    // TODO : requires refactoring as part of ajax impl
     public static void index()
     {
       User user = Accounts.getCurrentUser();
@@ -84,10 +88,11 @@ public class DonationController extends Controller
             renderJSON(obj);
             
         }
-        //index();
     }
     
     /**
+     * The list of user (donor) geolocations assembled in equivalent of json array
+     * comprise: user firstName, latitude, longitude
      * renders all Geolocations as a json array
      */
     public static void listGeolocations()
