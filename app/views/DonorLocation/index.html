@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Donor location' /}
+
+   <nav class="ui menu">
+    <a class="ui active item" href="/donorlocation">Donor Location</a>
+    <a class="ui item" href = "/administrator/report">Administrator Home</a>
+  </nav>
+
+ <section class="ui segment">
+  <h3>Donor location</h3>
+  <div id="googleMap" style="width:500px;height:380px;"></div>
+  <button type="button" onclick="start()">Start</button>
+  <button type="button" onclick="stop()">Stop</button>
+</section>
+
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script src="@{'/public/javascripts/donorlocation.js'}"></script>
