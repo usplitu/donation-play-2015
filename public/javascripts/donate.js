@@ -22,8 +22,6 @@ $('.ui.form')
 
 {
 	onSuccess : function() {
-		inline: true,
-	    console.log('on success');
 	    submitForm();
 	    return false; // dropdown remains open following press donate button. progress bar fails on return true. why?
 	} 
