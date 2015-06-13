@@ -274,7 +274,8 @@ function populateTable()
  */
 function reset()
 {
-	$('#usertable').empty();
-	populateTable();
+//	$('#usertable').empty();
+//	populateTable();
+	location.reload();
 }
 google.maps.event.addDomListener(window, 'load', initialize);
