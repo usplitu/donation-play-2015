@@ -1,19 +1,20 @@
 var listenerHandler;
-var pos = [];
-var posIndex = 0;
-var polygon;
-var lineCoords = [];
-
-var markers = [];
+var pos = []; // array of lat, lng representing the polyline start and endpoints created by clicking map
+var posIndex = 0; // index variable associate with pos[]
+var polygon; // the polygon defined by the sequence of polylines
+var markers = []; // array of all user's markers (unfiltered)
 
 
 var map;
 var latlng = [];
 
-
+/**
+ * Render the basic google map
+ * Invoke method to retrieve marker locations and associate user from server side
+ */
 function initialize() {
 	// create basic map without markers
-	map();
+	rendermap();
 	// get marker locations and render on map
     retrieveMarkerLocations();
 }
@@ -22,7 +23,7 @@ function initialize() {
  * The basic map, no markers, no centre specified
  * Canvas id on html is 'googleMap'
  */
-function map() {
+function rendermap() {
   var mapProp = {
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -36,7 +37,8 @@ function map() {
  */
 function start()
 {
-	  listenerHandler = google.maps.event.addListener(map, 'click', function (e) {
+	$('#usertable').empty();
+	listenerHandler = google.maps.event.addListener(map, 'click', function (e) {
 		    //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
 		    pos[posIndex] = e.latLng;
 			if (posIndex > 0)
@@ -48,7 +50,12 @@ function start()
 
 }
 
-
+/**
+ * create and render a polyline on map
+ * attaches beginning to end previous polyline if such exists
+ * @param prevIndex
+ * @param index
+ */
 function polyline(prevIndex, index)
 {
 	var coords = [
@@ -68,6 +75,11 @@ function polyline(prevIndex, index)
 
 }
 
+/**
+ * Stop drawing the sequence of polylines
+ * Update listeners
+ * Invoke drawPolygon method
+ */
 function stop()
 {
 	polyline(pos.length - 1, 0); // close the polygon: last to first points
@@ -83,6 +95,7 @@ function stop()
  */
 function drawPolygon()
 {	
+	var lineCoords = [];
 	// log the coordinates
 	// draw polygon defined by coordinates
 	for (var j = 0; j < pos.length; j += 1)
@@ -122,7 +135,6 @@ function registerIsInsidePolyListener()
 	  });
 	
 }
-google.maps.event.addDomListener(window, 'load', initialize);
 
 /**
  * Use ajax call to get users and their geolocations
@@ -158,6 +170,7 @@ function callback(data)
 
 	latlng = data; // store the array of data in a global for later use
 	fitBounds(latlng); // then invoke fitBounds to zoom and display markers within view
+	populateTable(); // with the name + gps of users
 }
 
 /**
@@ -224,6 +237,7 @@ function setMarkersInsidePoly()
 		if (google.maps.geometry.poly.containsLocation(point, polygon))
 		{
 			markers[i].setVisible(true);
+			populateTableRow(latlng[i]);
 		}
 		else
 		{
@@ -231,3 +245,36 @@ function setMarkersInsidePoly()
 		}
 	}
 }
+
+/**
+ * renders table row comprising user and its gps coordinates
+ * @param data the array comprising donor name + gps (lat, lng)
+ */
+function populateTableRow(data)
+{
+	var donor = "<td>" + data[0] + "</td>";
+	var gps   = "<td>" + data[1] + " " + data[2] + "</td>";
+	$('#usertable').append("<tr>" + donor + gps + "</tr>");
+}
+
+
+/**
+ * Populates table with complete user list + it's gps coords
+ */
+function populateTable()
+{
+	$.each(latlng, function(i, val) {
+		populateTableRow(val);
+	});
+}
+
+/**
+ * Clears table row data
+ * Restores table data with complete unfiltered user list
+ */
+function reset()
+{
+	$('#usertable').empty();
+	populateTable();
+}
+google.maps.event.addDomListener(window, 'load', initialize);

@@ -1,26 +1,45 @@
 #{extends 'main.html' /}
 #{set title:'Donor location' /}
 
-   <nav class="ui menu">
-    <a class="ui active item" href="/donorlocation">Donor Location</a>
-    <a class="ui item" href = "/administrator/report">Administrator Home</a>
-  </nav>
-
- <section class="ui segment">
-  <h3>Donor location</h3>
-  <div id="googleMap" style="width:500px;height:380px;"></div>
-  <button type="button" onclick="start()">Start</button>
-  <button type="button" onclick="stop()">Stop</button>
-  <button type="button" onclick="setMarkersInsidePoly()">Filter</button>
-</section>
-<!-- <section>
-	<div id="users">
-	<ul>
-	#{list items:users, as: 'user'}
-	  <li>${user.firstName}</li>
-	#{/list}
-	</ul>
+<nav class="ui menu">
+  <a class="ui active item" href="/donorlocation">Donor Location</a>
+  <a class="ui item" href = "/administrator/report">Administrator Home</a>
+</nav>
+<section class="ui segment">
+	<div class="ui grid">
+	  <div class="eight wide column">
+	    <section class="ui segment">
+	      <h4>Donor locations</h4>
+	      <div id="googleMap" style="width:100%;height:400px;"></div>     
+	      <button type="button" onclick="start()">Start</button>
+	      <button type="button" onclick="stop()">Stop</button>
+	      <button type="button" onclick="setMarkersInsidePoly()">Filter</button>
+	      <button type="button" onclick="reset()">Reset</button>
+	    </section>
+	  </div>
+	  <div class="eight wide column">
+	    <section class="ui segment">
+	    <h4>Donors within search area</h4><br>
+	      <div style="overflow-y:scroll; max-height:405px">
+				  <table class="ui table segment">
+				    <thead>
+				      <tr>
+				        <th>Donors</th>
+				        <th>GPS(latitude, longitude)</th>
+				      </tr>
+				    </thead>
+				    <tbody id="usertable">				   
+				      <tr>
+				        <!-- <td id="user">Homer</td> -->
+				        <!-- <td id="gps">(55, -7)</td> -->
+				      </tr>				   
+				    </tbody>
+				  </table>
+        </div>
+	    </section>
+	  </div>
 	</div>
-</section> -->
-  <script src="http://maps.googleapis.com/maps/api/js"></script>
-  <script src="@{'/public/javascripts/donorlocation.js'}"></script>
+</section>
+
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="@{'/public/javascripts/donorlocation.js'}"></script>
