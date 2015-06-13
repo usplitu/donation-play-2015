@@ -23,7 +23,7 @@ $(document).ready(function ()
 	{
 		var latlng = [];
 	    $(function() {
-	        $.get("geolocations/json", function(data) {
+	        $.get("donorlocation/geolocations", function(data) {
 	        }).done(function(data) {
 		           $.each(data, function(index, geoObj) 
 				   {

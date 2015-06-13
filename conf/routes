@@ -39,13 +39,11 @@ GET  /administrator/logout         Administrator.logout
 
 # Donor Location
 GET /donorlocation                 DonorLocation.index
+GET /donorlocation/geolocations    DonorLocation.listGeolocations
 
 # Office
 GET /office                        OfficeController.index
 POST /office/create                OfficeController.register
-
-# Geolocations
-GET /geolocations/json             DonationController.listGeolocations
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

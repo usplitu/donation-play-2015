@@ -11,7 +11,16 @@
   <div id="googleMap" style="width:500px;height:380px;"></div>
   <button type="button" onclick="start()">Start</button>
   <button type="button" onclick="stop()">Stop</button>
+  <button type="button" onclick="setMarkersInsidePoly()">Filter</button>
 </section>
-
+<!-- <section>
+	<div id="users">
+	<ul>
+	#{list items:users, as: 'user'}
+	  <li>${user.firstName}</li>
+	#{/list}
+	</ul>
+	</div>
+</section> -->
   <script src="http://maps.googleapis.com/maps/api/js"></script>
   <script src="@{'/public/javascripts/donorlocation.js'}"></script>
