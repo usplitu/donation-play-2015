@@ -3,8 +3,7 @@ var pos = []; // array of lat, lng representing the polyline start and endpoints
 var posIndex = 0; // index variable associate with pos[]
 var polygon; // the polygon defined by the sequence of polylines
 var markers = []; // array of all user's markers (unfiltered)
-
-
+var startAllowed; // boolean to enforce start() invocation once only between refreshes
 var map;
 var latlng = [];
 
@@ -17,6 +16,7 @@ function initialize() {
 	rendermap();
 	// get marker locations and render on map
     retrieveMarkerLocations();
+    startAllowed = true;
 }
 
 /**
@@ -37,6 +37,11 @@ function rendermap() {
  */
 function start()
 {
+	if (startAllowed == false) 
+	{
+		alert("Reset to Start");
+		return;
+	}
 	$('#usertable').empty();
 	listenerHandler = google.maps.event.addListener(map, 'click', function (e) {
 		    //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
@@ -57,7 +62,7 @@ function start()
  * @param index
  */
 function polyline(prevIndex, index)
-{
+{	
 	var coords = [
 	     new google.maps.LatLng(pos[prevIndex].lat(), pos[prevIndex].lng()),
 	     new google.maps.LatLng(pos[index].lat(), pos[index].lng())
@@ -87,7 +92,8 @@ function stop()
 	// but for the moment this will do - overlaying polyline with polygon
     drawPolygon();
 	google.maps.event.removeListener(listenerHandler);
-	registerIsInsidePolyListener();
+	listenerHandler = null;
+	startAllowed = false; // ensures start() invokable once only between refreshes
 }
 
 /**
@@ -115,7 +121,8 @@ function drawPolygon()
 		  });
 
     polygon.setMap(map);
-    registerIsInsidePolyListener();
+    //registerIsInsidePolyListener();
+    google.maps.event.clearListeners(map, 'click');
 }
 
 /**
@@ -124,17 +131,17 @@ function drawPolygon()
  * https://developers.google.com/maps/documentation/javascript/geometry
  * https://developers.google.com/maps/documentation/javascript/3.exp/reference
  */
-function registerIsInsidePolyListener()
-{
-	  var isInsideListenerHandler = google.maps.event.addListener(map, 'click', function(e) {
-		    if (google.maps.geometry.poly.containsLocation(e.latLng, polygon)) {
-		      alert("inside");
-		    } else {
-		      alert("outside");
-		    }
-	  });
-	
-}
+//function registerIsInsidePolyListener()
+//{
+//	  var isInsideListenerHandler = google.maps.event.addListener(map, 'click', function(e) {
+//		    if (google.maps.geometry.poly.containsLocation(e.latLng, polygon)) {
+//		      alert("inside");
+//		    } else {
+//		      alert("outside");
+//		    }
+//	  });
+//	
+//}
 
 /**
  * Use ajax call to get users and their geolocations
@@ -271,6 +278,7 @@ function populateTable()
 /**
  * Clears table row data
  * Restores table data with complete unfiltered user list
+ * TODO jQuery ajax call to refresh
  */
 function reset()
 {
