@@ -15,8 +15,8 @@ function initialize() {
 	// create basic map without markers
 	rendermap();
 	// get marker locations and render on map
-    retrieveMarkerLocations();
-    startAllowed = true;
+  retrieveMarkerLocations();
+  startAllowed = true;
 }
 
 /**
@@ -152,18 +152,17 @@ function drawPolygon()
  * geoObj[2] is longitude  
  * We use geoObj[0] in the infoWindow. Click on marker reveals the name of donor (user)
  */
+
 function retrieveMarkerLocations()
 {
-    $(function() {
-        $.get("donorlocation/geolocations", function(data) {
-        }).done(function(data) {
-	           $.each(data, function(index, geoObj) 
-			   {
-			         console.log(geoObj[0] + " " + geoObj[1] + " " + geoObj[2]);
-			   });
-        	callback(data);
-        });
+  $(function() {
+    $.get("donorlocation/geolocations", function(data) {
+      $.each(data, function(index, geoObj) {
+        console.log(geoObj[0] + " " + geoObj[1] + " " + geoObj[2]);
+      });
+      callback(data);
     });
+  });
 }
 
 /**
