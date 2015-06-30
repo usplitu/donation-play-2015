@@ -1,11 +1,13 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import models.Geolocation;
 import models.User;
-import play.Logger;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
 import play.mvc.Controller;
 
 public class DonorLocation extends Controller
@@ -25,16 +27,30 @@ public class DonorLocation extends Controller
   public static void listGeolocations()
   {
     List<Geolocation> geo = Geolocation.findAll();
-    List<ArrayList<String>> jsonArray = new ArrayList<ArrayList<String>>();
+    JSONArray array = new JSONArray();
     for (Geolocation g : geo)
     {
-      Logger.info("Geolocations " + g.latitude + ", " + g.longitude);   
-      ArrayList<String> s = new ArrayList<String>();
-      s.add(g.user.firstName);
-      s.add(g.latitude);
-      s.add(g.longitude);
-      jsonArray.add(s);
+      JSONArray ar = new JSONArray();
+      ar.add(g.user.firstName);
+      ar.add(g.latitude);
+      ar.add(g.longitude);
+      array.add(ar);
     }
-    renderJSON(jsonArray);
+    renderJSON(array);
   }
+//  public static void listGeolocations()
+//  {
+//    List<Geolocation> geo = Geolocation.findAll();
+//    List<ArrayList<String>> jsonArray = new ArrayList<ArrayList<String>>();
+//    for (Geolocation g : geo)
+//    {
+//      Logger.info("Geolocations " + g.latitude + ", " + g.longitude);   
+//      ArrayList<String> s = new ArrayList<String>();
+//      s.add(g.user.firstName);
+//      s.add(g.latitude);
+//      s.add(g.longitude);
+//      jsonArray.add(s);
+//    }
+//    renderJSON(jsonArray);
+//  }
 }

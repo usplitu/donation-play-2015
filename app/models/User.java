@@ -5,6 +5,7 @@
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import play.db.jpa.Model;
 
@@ -15,7 +16,7 @@ import play.db.jpa.Model;
    *
    */
   @Entity
-  // @Table(name="`User`")
+  @Table(name="`User`")
   public class User extends Model
   {
     public boolean usaCitizen;
