@@ -1,6 +1,8 @@
 $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox();
 
+$('#nameTaken').append('<div class="ui pointing left red label">That name is already registered</div>')
+
 $('.ui.form')
   .form({
   	
