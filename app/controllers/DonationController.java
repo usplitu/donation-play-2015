@@ -73,17 +73,19 @@ public class DonationController extends Controller
         } 
         else 
         {
-            Candidate candidate = Candidate.findByEmail(candidateEmail);
-            Donation donation = new Donation(user, amountDonated, methodDonated, candidate);
-            donation.save();
- 
-            candidate.addDonation(donation);
-            candidate.save();
-            user.addDonation(donation);
-            user.save();
-            
+            String progressPercent = getProgress();
+            Candidate candidate = Candidate.findByEmail(candidateEmail);           
+            if(!progressPercent.equalsIgnoreCase("100"))
+            {
+              Donation donation = new Donation(user, amountDonated, methodDonated, candidate);
+              donation.save();
+              candidate.addDonation(donation);
+              candidate.save();
+              user.addDonation(donation);
+              user.save();
+            } 
             JSONObject obj = new JSONObject();
-            obj.put("progress", getProgress());
+            obj.put("progress", progressPercent);
             obj.put("candidate", candidate.firstName + " " + candidate.lastName);
             renderJSON(obj);
             
