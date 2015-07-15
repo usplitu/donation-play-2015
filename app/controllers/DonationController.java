@@ -83,7 +83,11 @@ public class DonationController extends Controller
               candidate.save();
               user.addDonation(donation);
               user.save();
-            } 
+            }
+            else
+            {
+              Logger.info("Donation not accepted: target already reached");
+            }
             JSONObject obj = new JSONObject();
             obj.put("progress", progressPercent);
             obj.put("candidate", candidate.firstName + " " + candidate.lastName);
