@@ -10,8 +10,14 @@
 <section class="ui segment">
   <form action="/register" method="POST">
     <div class="ui fluid form segment">
-      <input type="checkbox" id = "usCitizen" name="user.usCitizen"> 
-      <label for="usCitizen">Tick to confirm you are a citizen of the USA</label> 
+         
+      <div class="inline field">
+        <div class="ui checkbox">
+          <input name="user.usCitizen" nane="user.usCitizen" type="checkbox">
+          <label>Tick to confirm you are a US citizen</label>
+        </div>
+      </div>
+      
       <div class="ui fluid form segment">
         <h3 class="ui header">Sign Up</h3>
         
@@ -80,16 +86,9 @@
 	      </div>
 	    </div>
 	  </div> 
-	    
-	      <div class="inline field">
-	        <div class="ui checkbox">
-	          <input id="conditions" type="checkbox">
-	          <label for="conditions">I agree to the terms and conditions</label>
-	        </div>
-	      </div>
-        <button type="submit" class="ui blue submit button">Submit</button>
-      </div>
+       <button type="submit" class="ui blue submit button">Submit</button>
     </div>
+   </div>
   </form>
 </section>
-<script>$('.ui.dropdown').dropdown()</script>
+<script src="@{'/public/javascripts/signup.js'}"></script>
