@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.0.0 - Video
+ * # Semantic UI 1.12.3 - Video
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -69,9 +69,11 @@ $.fn.video = function(parameters) {
         initialize: function() {
           module.debug('Initializing video');
           module.create();
-          $module
-            .on('click' + eventNamespace, selector.placeholder, module.play)
-            .on('click' + eventNamespace, selector.playButton, module.play)
+          $placeholder
+            .on('click' + eventNamespace, module.play)
+          ;
+          $playButton
+            .on('click' + eventNamespace, module.play)
           ;
           module.instantiate();
         },
@@ -102,6 +104,12 @@ $.fn.video = function(parameters) {
           module.reset();
           $module
             .removeData(moduleNamespace)
+            .off(eventNamespace)
+          ;
+          $placeholder
+            .off(eventNamespace)
+          ;
+          $playButton
             .off(eventNamespace)
           ;
         },
@@ -342,7 +350,7 @@ $.fn.video = function(parameters) {
               });
             }
             clearTimeout(module.performance.timer);
-            module.performance.timer = setTimeout(module.performance.display, 500);
+            module.performance.timer = setTimeout(module.performance.display, 100);
           },
           display: function() {
             var
@@ -458,7 +466,7 @@ $.fn.video.settings = {
   namespace   : 'video',
 
   debug       : false,
-  verbose     : false,
+  verbose     : true,
   performance : true,
 
   metadata    : {
