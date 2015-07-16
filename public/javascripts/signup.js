@@ -87,7 +87,7 @@ $('.ui.form')
       },
       {
         type   : 'isValidLatitude',
-        prompt : 'Please enter latitude: valid range -90.0 to +90.0'
+        prompt : 'Please enter latitude: valid range -85.0 to +85.0'
       }]
   },
   

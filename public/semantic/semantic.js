@@ -1748,11 +1748,11 @@ $.fn.form.settings = {
     },
 
     isValidLatitude: function(value) {
-      return value >= -90.00 && value <= 90.00;
+      return value >= -85.0 && value <= 85.0;
     },
     
     isValidLongitude: function(value) {
-      return value >= -180.00 && value <= 180.00;
+      return value >= -180.0 && value <= 180.0;
     }
     
   }
