@@ -95,11 +95,15 @@ function submitForm() {
 		  console.log("registration response " + response.registerResponse);
 		  if(response.registerResponse === 'nameTaken')
 		  {
-			  $('#nameTaken').append('<div class="ui pointing left red label">That name is already registered</div>');
+			  if ($('#registerLabel').length)
+				  $('#registerLabel').remove();
+			  $('#nameTaken').append('<div id="registerLabel class="ui pointing left red label">That name is already registered</div>');
 	      }
 		  else if(response.registerRespone === 'success')
 		  {
-			  $('#nameTaken').append('<div class="ui pointing left label">Registration succeeded</div>');
+			  if ($('#registerLabel').length)
+				  $('#registerLabel').remove();
+			  $('#nameTaken').append('<div id="registerLabel class="ui pointing left green label">Registration succeeded</div>');
 	      }
 	  }
   });
