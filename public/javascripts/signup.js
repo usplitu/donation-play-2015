@@ -3,7 +3,7 @@ $('.ui.checkbox').checkbox();
 
 $('.ui.form')
   .form({
-  	
+    
     'user.usCitizen': {
       identifier : 'user.usCitizen',
       rules: [
@@ -13,7 +13,7 @@ $('.ui.form')
         }
       ]
     },
-  	
+    
     'user.firstName': {
       identifier  : 'user.firstName',
       rules: [
@@ -78,10 +78,10 @@ $('.ui.form')
     identifier : 'geolocation.latitude',
     rules: [
       {
-        type   : 'integer[-90..90]',
-        prompt : 'Please enter latitude: valid range -90 to 90'
+        type   : 'isValidLatitude',
+        prompt : 'Please enter latitude: valid range -90.0 to +90.0'
       }]
-	},
+  },
 
   
   'geolocation.longitude': {
@@ -91,13 +91,13 @@ $('.ui.form')
         type   : 'integer[-180..180]',
         prompt : 'Please enter longitude: valid range -180 to +180'
       }]
-  	}
+    }
   }, 
   
   {
     onSuccess : function() {
-	  submitForm();
-	  return false; 
+    submitForm();
+    return false; 
     }    
   }
   
@@ -107,13 +107,13 @@ $('.ui.form')
  * store form data in variable named formData
  * post form data
  * on return from ajax call:
- * 		check if label div present
- * 				if label div present detach it
- * 		if response confirms registration failed because name taken:
- * 				recreate div with red label indicating registration failed and why
- * 		if response confirms registration succeeded then:
- * 				recreate div with teal label indication successful registration
- * 		
+ *    check if label div present
+ *        if label div present detach it
+ *    if response confirms registration failed because name taken:
+ *        recreate div with red label indicating registration failed and why
+ *    if response confirms registration succeeded then:
+ *        recreate div with teal label indication successful registration
+ *    
  * dynamically create new label div 
  */
 function submitForm() {
@@ -122,17 +122,17 @@ function submitForm() {
     type: 'POST',
     url: '/register',
     data: formData,
-	  success: function(response) {            
-		  console.log("registration response " + response.registerResponse);
-		  if ($('#registerLabel').length) {
-		  	$('#registerLabel').detach();
-	  	}
-		  if(response.registerResponse === 'nameTaken') {
-			  $('#nameTaken').append('<div id="registerLabel" class="ui pointing left red label">That name is already registered</div>');
-	    }
-		  else if(response.registerResponse === 'registered') {
-			  $('#nameTaken').append('<div id="registerLabel" class="ui pointing left teal label">Registration succeeded</div>');
-	    }
-	  }
+    success: function(response) {            
+      console.log("registration response " + response.registerResponse);
+      if ($('#registerLabel').length) {
+        $('#registerLabel').detach();
+      }
+      if(response.registerResponse === 'nameTaken') {
+        $('#nameTaken').append('<div id="registerLabel" class="ui pointing left red label">That name is already registered</div>');
+      }
+      else if(response.registerResponse === 'registered') {
+        $('#nameTaken').append('<div id="registerLabel" class="ui pointing left teal label">Registration succeeded</div>');
+      }
+    }
   });
 }
