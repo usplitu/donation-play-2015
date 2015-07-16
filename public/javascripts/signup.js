@@ -78,17 +78,24 @@ $('.ui.form')
     identifier : 'geolocation.latitude',
     rules: [
       {
+      	type: 'empty',
+      	prompt: 'Please enter your latitude'
+      },
+      {
         type   : 'isValidLatitude',
         prompt : 'Please enter latitude: valid range -90.0 to +90.0'
       }]
   },
-
   
   'geolocation.longitude': {
     identifier : 'geolocation.longitude',
     rules: [
       {
-        type   : 'integer[-180..180]',
+         type: 'empty',
+         prompt: 'Please enter your longitude'
+      },            
+      {
+        type   : 'isValidLongitude',
         prompt : 'Please enter longitude: valid range -180 to +180'
       }]
     }
@@ -99,9 +106,7 @@ $('.ui.form')
     submitForm();
     return false; 
     }    
-  }
-  
-  ); 
+  }); 
 
 /**
  * store form data in variable named formData
