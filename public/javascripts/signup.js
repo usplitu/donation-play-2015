@@ -1,8 +1,6 @@
 $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox();
 
-$('#nameTaken').append('<div class="ui pointing left red label">That name is already registered</div>')
-
 $('.ui.form')
   .form({
   	
@@ -73,7 +71,36 @@ $('.ui.form')
         {
           type   : 'length[6]',
           prompt : 'Your password must be at least 6 characters'
-        }
-      ]
+        }]
     }
-  }); 
+  },
+  
+  {
+    onSuccess : function() {
+	  submitForm();
+	  return false; 
+    }    
+  }
+  
+  ); 
+
+
+function submitForm() {
+  var formData = $('.ui.form.segment input').serialize(); 
+  $.ajax({
+    type: 'POST',
+    url: '/register',
+    data: formData,
+	  success: function(response) {            
+		  console.log("registration response " + response.registerResponse);
+		  if(response.registerResponse === 'nameTaken')
+		  {
+			  $('#nameTaken').append('<div class="ui pointing left red label">That name is already registered</div>');
+	      }
+		  else if(response.registerRespone === 'success')
+		  {
+			  $('#nameTaken').append('<div class="ui pointing left label">Registration succeeded</div>');
+	      }
+	  }
+  });
+}

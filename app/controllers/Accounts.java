@@ -5,6 +5,9 @@ import java.util.List;
 import models.Candidate;
 import models.Geolocation;
 import models.User;
+
+import org.json.simple.JSONObject;
+
 import play.Logger;
 import play.mvc.Controller;
 
@@ -19,17 +22,22 @@ public class Accounts extends Controller
 
   public static void register(User user, Geolocation geolocation)
   {
+    JSONObject obj = new JSONObject();
     if (!isRegistered(user))
     {
-      //geolocation.addUser(user);
       geolocation.save();
       
       user.addGeolocation(geolocation);
       user.save();
       
-      login();      
+      obj.put("registerResponse", "success");
+      renderJSON(obj);
+      //login();  
+      
     }
-    renderText("You have already registered.\nPlease press back button and navigate to the log in page." );
+    obj.put("registerResponse", "nameTaken");
+    renderJSON(obj);
+    //renderText("You have already registered.\nPlease press back button and navigate to the log in page." );
   }
 
   private static boolean isRegistered(User currUser)
