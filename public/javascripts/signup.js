@@ -28,7 +28,7 @@ $('.ui.form')
       rules: [
         {
           type   : 'empty',
-          prompt : 'Please select your last name'
+          prompt : 'Please enter your last name'
         }
       ]
     },
@@ -72,8 +72,27 @@ $('.ui.form')
           type   : 'length[6]',
           prompt : 'Your password must be at least 6 characters'
         }]
-    }
   },
+  // http://semantic-ui.com/behaviors/form.html#/examples
+  'geolocation.latitude': {
+    identifier : 'geolocation.latitude',
+    rules: [
+      {
+        type   : 'integer[-90..90]',
+        prompt : 'Please enter latitude: valid range -90 to 90'
+      }]
+	},
+
+  
+  'geolocation.longitude': {
+    identifier : 'geolocation.longitude',
+    rules: [
+      {
+        type   : 'integer[-180..180]',
+        prompt : 'Please enter longitude: valid range -180 to +180'
+      }]
+  	}
+  }, 
   
   {
     onSuccess : function() {
@@ -84,7 +103,19 @@ $('.ui.form')
   
   ); 
 
-
+/**
+ * store form data in variable named formData
+ * post form data
+ * on return from ajax call:
+ * 		check if label div present
+ * 				if label div present detach it
+ * 		if response confirms registration failed because name taken:
+ * 				recreate div with red label indicating registration failed and why
+ * 		if response confirms registration succeeded then:
+ * 				recreate div with teal label indication successful registration
+ * 		
+ * dynamically create new label div 
+ */
 function submitForm() {
   var formData = $('.ui.form.segment input').serialize(); 
   $.ajax({
@@ -93,18 +124,15 @@ function submitForm() {
     data: formData,
 	  success: function(response) {            
 		  console.log("registration response " + response.registerResponse);
-		  if(response.registerResponse === 'nameTaken')
-		  {
-			  if ($('#registerLabel').length)
-				  $('#registerLabel').remove();
-			  $('#nameTaken').append('<div id="registerLabel class="ui pointing left red label">That name is already registered</div>');
-	      }
-		  else if(response.registerRespone === 'success')
-		  {
-			  if ($('#registerLabel').length)
-				  $('#registerLabel').remove();
-			  $('#nameTaken').append('<div id="registerLabel class="ui pointing left green label">Registration succeeded</div>');
-	      }
+		  if ($('#registerLabel').length) {
+		  	$('#registerLabel').detach();
+	  	}
+		  if(response.registerResponse === 'nameTaken') {
+			  $('#nameTaken').append('<div id="registerLabel" class="ui pointing left red label">That name is already registered</div>');
+	    }
+		  else if(response.registerResponse === 'registered') {
+			  $('#nameTaken').append('<div id="registerLabel" class="ui pointing left teal label">Registration succeeded</div>');
+	    }
 	  }
   });
 }

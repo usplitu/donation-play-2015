@@ -30,7 +30,7 @@ public class Accounts extends Controller
       user.addGeolocation(geolocation);
       user.save();
       
-      obj.put("registerResponse", "success");
+      obj.put("registerResponse", "registered");
       renderJSON(obj);
       //login();  
       
