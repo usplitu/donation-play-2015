@@ -10,8 +10,6 @@ The following scripts placed in .bash_profile facilitate pretty printing of git 
 
 Git aliases pretty print logs
 
-#alias gitp='git log --pretty=oneline --max-count=10'
-
 alias gitp="git log --pretty=format:'%C(yellow)%h %<(24)%C(red)%ad  %Creset%s' --date=local --max-count=10"
 
 alias gitpd='git log --pretty=oneline'
