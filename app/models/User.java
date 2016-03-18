@@ -24,11 +24,10 @@ import play.db.jpa.Model;
     public String password;
 
     public User(boolean usaCitizen,
-              String firstName, 
-              String lastName, 
-              String email, 
-              String password
-              )
+	            String firstName, 
+	            String lastName, 
+	            String email, 
+	            String password)
     {
       this.usaCitizen = usaCitizen;
       this.firstName = firstName;

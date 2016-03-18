@@ -17,8 +17,7 @@ GET    /donation                                DonationController.index
 # Donation page
 GET    /donation                                DonationController.index
 POST   /donation/donate                         DonationController.donate
-
-GET    /donation/report       DonationController.renderReport
+GET    /donation/report                         DonationController.renderReport
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
