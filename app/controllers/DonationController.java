@@ -24,20 +24,17 @@ public class DonationController extends Controller
 	    else
 	    {
 	      String prog = getPercentTargetAchieved();
-	      String progress = prog + "%";//a trailing % required to render in view progress bar
-
-	      Logger.info("Donation ctrler : user is " + user.email);
+	      //a trailing % required to render progress bar (view)
+	      String progress = prog + "%";
 	      Logger.info("Donation ctrler : percent target achieved " + progress);
 	      render(user, progress);
 	    }
 	  }
 
     /**
-     * Log and save to database amount donated and method of donation, eg.
-     * paypal, direct payment
-     * 
-     * @param amountDonated
-     * @param methodDonated
+     * Log and save to database amount donated and method of donation.
+     * @param amountDonated Dollars donation 
+     * @param methodDonated Method used to donate (Paypal, Direct).
      */
     public static void donate(long amountDonated, String methodDonated) 
     {
@@ -58,8 +55,8 @@ public class DonationController extends Controller
     }
 
     /**
-     * @param user
-     * @param amountDonated
+     * @param user The donor. 
+     * @param amountDonated The amount donation.
      */
     private static void addDonation(User user, long amountDonated,String methodDonated) 
     {
@@ -67,19 +64,18 @@ public class DonationController extends Controller
         bal.save();
     }
     
-    /*
+    /**
      * Hard codes an arbitrary donation target amount
-     * @return the target donation amount
+     * @return The target donation amount
      */
 	private static long getDonationTarget() 
 	{
-		// TODO Input this value thro' html template admin controlled
 		return 20000;
 	}
 
-	/*
+	/**
 	 * 
-	 * @return the percentage of donation target achieved
+	 * @return The percentage of donation target achieved to date.
 	 */
 	public static String getPercentTargetAchieved() 
 	{
@@ -92,16 +88,17 @@ public class DonationController extends Controller
 		long target = getDonationTarget();
 		long percentachieved = (total * 100 / target);
 		String progress = String.valueOf(percentachieved);
-		Logger.info("Percent of target achieved (string) " + progress
-				+ " percentachieved (long)= " + percentachieved);
 		return progress;
 	}
 	
-	  public static void renderReport()
-	  {
-	    List<Donation> donations = Donation.findAll();
-	    Collections.shuffle(donations);
-	    Collections.sort(donations, new DonationDateComparator());
-	    render(donations);
-	  }
+	/**
+	 * Render report summary
+	 */
+	public static void renderReport()
+	{
+	  List<Donation> donations = Donation.findAll();
+	  Collections.shuffle(donations);
+	  Collections.sort(donations, new DonationDateComparator());
+	  render(donations);
+	}
 }
